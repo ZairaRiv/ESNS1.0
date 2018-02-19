@@ -11,6 +11,9 @@ export class ReportsComponent implements OnInit {
   constructor(private dataService:DataService) { }
 
   ngOnInit() {
+    this.dataService.getPosts().subscribe((posts) => {
+      
+    })
   }
 
 }
