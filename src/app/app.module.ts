@@ -15,6 +15,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { IntroComponent } from './components/intro/intro.component';
 
 import {MediaMatcher} from '@angular/cdk/layout';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {MediaMatcher} from '@angular/cdk/layout';
     UsersComponent,
     ReportsComponent,
     HeaderComponent,
-    IntroComponent
+    IntroComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
