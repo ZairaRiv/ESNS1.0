@@ -14,10 +14,12 @@ export class HeaderComponent implements OnInit {
   private _mobileQueryListener: () => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataService:DataService) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this.mobileQuery = media.matchMedia('(max-width: 650px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
+
+  fillerNav = Array(50).fill(0).map((_, i) => `Nav Item ${i + 1}`);
 
   getMenu() {
     return this.dataService.getMenu();
@@ -31,5 +33,4 @@ export class HeaderComponent implements OnInit {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 }

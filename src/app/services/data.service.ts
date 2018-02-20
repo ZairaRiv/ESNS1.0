@@ -19,7 +19,6 @@ export class DataService {
    getMenu(){
     var menu: MenuItems[] = [
       {link: '/', title:"Home"},
-      {link: "/report/", title: "Report"}, 
       {link: "/about/", title: "About"}, 
       {link: "/contact/", title: "Contact"}, 
       {link: "/admin/", title: "Admin"}

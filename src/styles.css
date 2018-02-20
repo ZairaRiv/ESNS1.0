@@ -1,19 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import '~bootstrap/dist/css/bootstrap.min.css';
 html,body {
     height:100%;
+    margin:0;
+    padding:0;
 }
-div.esns_header {
-    height:100%;
-    width:100%;
-    position:absolute;
-    left:0px;
-    top:0px;
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300; 
 }
+
 div.esns_body {
     width:100%;
     position:relative;
-    top:100%;
 }
+
+/* remove all hyperlink colors */
+a {
+    color: inherit; 
+    text-decoration: inherit; 
+  }

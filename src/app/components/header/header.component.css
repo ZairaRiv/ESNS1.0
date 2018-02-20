@@ -1,46 +1,123 @@
+@media (max-width: 650px) {
+  .mobile-menu {
+    display: block;
+  }
+  .desktop-menu {
+    display: none;
+  }
+}
+
+@media (min-width: 650px) {
+  .mobile-menu {
+    display: none;
+  }
+  .desktop-menu {
+    display: block;
+  }
+}
+
 .example-icon {
     padding: 0 14px;
-  }
-  
-  .example-spacer {
-    flex: 1 1 auto;
-  }
+}
 
-  .menu-container {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  .example-is-mobile .example-toolbar {
-    position: fixed;
-    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
-    z-index: 2;
-  }
-  
-  h1.example-app-name {
-    margin-left: 8px;
-  }
-  
-  .example-sidenav-container {
-    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
-       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
-    flex: 1;
-  }
-  
-  .example-is-mobile .example-sidenav-container {
-    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
-       `<body>` to be our scrolling element for mobile layouts. */
-    flex: 1 0 auto;
-  }
-  
-  .mat-drawer { 
-    width:70%;
-    background-color: #3f51b5;
-    color: white;
-  } 
+.example-spacer {
+  flex: 1 1 auto;
+}
 
+.bigbreaker {
+  width: 50px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 100px;
+}
+
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+  height:60px;
+}
+
+h1.example-app-name {
+  margin-left: 8px;
+}
+
+.example-sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+      causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+}
+
+.example-is-mobile .example-sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+      `<body>` to be our scrolling element for mobile layouts. */
+  flex: 1 0 auto;
+}
+
+
+div.esns_header {
+  width:100%;
+  position:fixed;
+  left:0px;
+  top:0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: #3f51b5;
+  height:64px;
+  z-index: 2;
+}
+
+.reportBtn {
+  position: fixed;
+  right: 10px;
+  height: 50px;
+  width: 80px;
+  top: 5px;
+  z-index: 10;
+}
+
+.header-spacer {
+  height: 64px;
+  width: 100%;
+}
+
+.mat-accordion {
+  height: 64px;
+}
+.mat-expansion-panel {
+  background-color: #3f51b5 !important;
+  height: 64px !important;
+  width: 100%;
+}
+
+.mat-expansion-panel-header {
+  height: 64px !important;
+}
+
+.mat-expansion-panel-header-title, .expansion-panels {
+  color: white !important;
+}
+
+.mat-expansion-panel-content {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.expansion-panels {
+  height: 64px;
+  background-color: #3f51b5;
+  width: 100%;
+  line-height: 64px;
+  border-top: 1px dashed #000;
+  padding-left: 15px;
+  margin: 0;
+}
