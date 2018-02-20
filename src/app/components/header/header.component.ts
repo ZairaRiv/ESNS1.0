@@ -9,6 +9,7 @@ import { DataService } from '../../services/data.service';
 })
 export class HeaderComponent implements OnInit {
   private menu = [];
+  public panelOpenState = false;
 
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
