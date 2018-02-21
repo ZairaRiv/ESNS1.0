@@ -1,0 +1,2 @@
+Generate new component for app
+ng g c components/NEWCOMPONENTNAME --module app
