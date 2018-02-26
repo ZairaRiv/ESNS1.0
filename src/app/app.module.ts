@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { UsersComponent } from './components/users/users.component';
 
 import { DataService } from './services/data.service';
-import { ReportsComponent } from './components/reports/reports.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
@@ -20,24 +19,45 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ReportComponent } from './components/report/report.component';
 
+import { RouterModule, Routes } from '@angular/router';
+import { MainComponent } from './components/main/main.component';
+import { CardComponent } from './designcomponents/card/card.component';
+import { GeolocateComponent } from './components/geolocate/geolocate.component';
+import { ReportTypeComponent } from './components/report-type/report-type.component';
+import { CenteredtextComponent } from './designcomponents/centeredtext/centeredtext.component';
+import { ListComponent } from './designcomponents/list/list.component';
+
+const appRoutes: Routes = [
+	{ path: '', component:MainComponent},
+  { path: 'about', component:AboutComponent},
+  { path: 'report', component:ReportComponent},
+  { path: 'reportType', component:ReportTypeComponent}
+]
+
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    ReportsComponent,
     HeaderComponent,
     IntroComponent,
     FooterComponent,
     AboutComponent,
     ContactComponent,
-    ReportComponent
+    ReportComponent,
+    MainComponent,
+    CardComponent,
+    GeolocateComponent,
+    ReportTypeComponent,
+    CenteredtextComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    MaterialModule
+	MaterialModule,
+	RouterModule.forRoot(appRoutes)
   ],
   // services
   providers: [DataService, MediaMatcher],

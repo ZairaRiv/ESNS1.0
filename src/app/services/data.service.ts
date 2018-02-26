@@ -25,9 +25,22 @@ export class DataService {
     ]
     return menu;
    }
+
+   getReportTypes() {
+     var reportTypes: MenuItems[] = [
+       {link: '/shooting/', title: "Shooting"}, 
+       {link: '/rape/', title: "Rape"}, 
+       {link: '/stalking/', title: "Stalking"}, 
+       {link: '/gta/', title: 'Grand Theft Auto'}, 
+       {link: '/injury/', title: 'Injury'}, 
+       {link: '/flood/', title: 'Flood'}
+     ]
+     return reportTypes;
+   }
 }
 
 interface MenuItems {
   link:string,
   title:string,
 }
+
