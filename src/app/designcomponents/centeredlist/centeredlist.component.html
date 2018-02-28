@@ -1,0 +1,10 @@
+
+<div>
+<mat-toolbar color="primary">
+  <mat-toolbar-row *ngFor="let item of listItems" (click)="followPath(item.link)" > 
+    <span>{{item.title}}</span>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+</div>
+

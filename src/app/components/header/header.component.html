@@ -14,7 +14,7 @@
                 {{panelOpenState ? 'Close' : 'Open'}} Menu
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <div class="expansion-panels" *ngFor="let item of getMenu()"><a href="{{item.link}}">{{item.title}}</a></div>
+          <div class="expansion-panels" *ngFor="let item of getMenu()" routerLink="/{{item.link}}">{{item.title}}</div>
       </mat-expansion-panel>
     </mat-accordion>
    
@@ -29,7 +29,7 @@
           <mat-toolbar-row>
             <span>ESNS</span>
             <span class="example-spacer"></span>
-            <button mat-button *ngFor="let item of getMenu()">{{item.title}}</button>
+            <button mat-button *ngFor="let item of getMenu()" routerLink="/{{item.link}}">{{item.title}}</button>
           </mat-toolbar-row>
         </mat-toolbar>
     </div>

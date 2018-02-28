@@ -25,13 +25,27 @@ import { CardComponent } from './designcomponents/card/card.component';
 import { GeolocateComponent } from './components/geolocate/geolocate.component';
 import { ReportTypeComponent } from './components/report-type/report-type.component';
 import { CenteredtextComponent } from './designcomponents/centeredtext/centeredtext.component';
-import { ListComponent } from './designcomponents/list/list.component';
+import { CenteredlistComponent } from './designcomponents/centeredlist/centeredlist.component';
+import { GridlistComponent } from './designcomponents/gridlist/gridlist.component';
+import { ShootingComponent } from './components/shooting/shooting.component';
+import { RapeComponent } from './components/rape/rape.component';
+import { StalkingComponent } from './components/stalking/stalking.component';
+import { GtaComponent } from './components/gta/gta.component';
+import { InjuryComponent } from './components/injury/injury.component';
+import { FloodComponent } from './components/flood/flood.component';
+import { BigboxComponent } from './designcomponents/bigbox/bigbox.component';
 
 const appRoutes: Routes = [
 	{ path: '', component:MainComponent},
   { path: 'about', component:AboutComponent},
   { path: 'report', component:ReportComponent},
-  { path: 'reportType', component:ReportTypeComponent}
+  { path: 'reportType', component:ReportTypeComponent},
+  { path: 'shooting', component:ShootingComponent}, 
+  { path: 'rape', component:RapeComponent}, 
+  { path: 'stalking', component:StalkingComponent}, 
+  { path: 'gta', component:GtaComponent}, 
+  { path: 'injury', component:InjuryComponent}, 
+  { path: 'flood', component:FloodComponent}
 ]
 
 @NgModule({
@@ -49,7 +63,15 @@ const appRoutes: Routes = [
     GeolocateComponent,
     ReportTypeComponent,
     CenteredtextComponent,
-    ListComponent
+    CenteredlistComponent,
+    GridlistComponent,
+    ShootingComponent,
+    RapeComponent,
+    StalkingComponent,
+    GtaComponent,
+    InjuryComponent,
+    FloodComponent,
+    BigboxComponent
   ],
   imports: [
     BrowserModule,

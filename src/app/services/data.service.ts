@@ -11,6 +11,16 @@ export class DataService {
     
    }
 
+   private _data: any;
+
+   public store (data: any) {
+     this._data = data;
+   }
+ 
+   public restore (): any {
+     return this._data;
+   }
+
    getPosts(){
      return this.http.get('https://jsonplaceholder.typicode.com/posts')
      .map(res=>res.json());
@@ -18,22 +28,22 @@ export class DataService {
 
    getMenu(){
     var menu: MenuItems[] = [
-      {link: '/', title:"Home"},
-      {link: "/about/", title: "About"}, 
-      {link: "/contact/", title: "Contact"}, 
-      {link: "/admin/", title: "Admin"}
+      {link: '', title:"Home"},
+      {link: "about", title: "About"}, 
+      {link: "contact", title: "Contact"}, 
+      {link: "admin", title: "Admin"}
     ]
     return menu;
    }
 
    getReportTypes() {
-     var reportTypes: MenuItems[] = [
-       {link: '/shooting/', title: "Shooting"}, 
-       {link: '/rape/', title: "Rape"}, 
-       {link: '/stalking/', title: "Stalking"}, 
-       {link: '/gta/', title: 'Grand Theft Auto'}, 
-       {link: '/injury/', title: 'Injury'}, 
-       {link: '/flood/', title: 'Flood'}
+     var reportTypes: GridItems[] = [
+       {link: '/shooting/', title: "Shooting", color: '#78C0E0', image: 'http://www.esns.life/images/shooting.png'}, 
+       {link: '/rape/', title: "Rape", color: '#449DD1', image: 'http://www.esns.life/images/rape.png'}, 
+       {link: '/stalking/', title: "Stalking", color: '#449DD1', image: 'http://www.esns.life/images/stalking.png'}, 
+       {link: '/gta/', title: 'Grand Theft Auto', color: '#78C0E0', image: 'http://www.esns.life/images/gta.png'}, 
+       {link: '/injury/', title: 'Injury', color: '#78C0E0', image: 'http://www.esns.life/images/injury.png'}, 
+       {link: '/flood/', title: 'Flood', color: '#449DD1', image: 'http://www.esns.life/images/flood.png'}
      ]
      return reportTypes;
    }
@@ -41,6 +51,13 @@ export class DataService {
 
 interface MenuItems {
   link:string,
+  title:string
+}
+
+interface GridItems {
+  link:string,
   title:string,
+  color: string,
+  image: string
 }
 

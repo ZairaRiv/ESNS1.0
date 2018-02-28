@@ -1,0 +1,53 @@
+.halfbox {
+	width: 50%;
+	height: 100%;
+	display: inline-block;
+	position: relative;
+	/*border-style: solid;*/
+	margin: auto;
+	cursor: pointer;
+}
+
+.halfbox.text {
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'Lato', sans-serif;
+	font-size: 30px;
+	font-weight: 700;
+	color: white;
+	margin-top: 20%;
+}
+
+@media (max-width: 400px){
+	.halfbox.text {
+		margin-top: 10%;
+		font-size: 24px;
+	}
+}
+
+@media (min-width: 400px){
+	.halfbox.text {
+		margin-top: 10%;
+		font-size: 30px;
+	}
+}
+
+@media (max-width: 650px) {
+	.mobile-view {
+	  display: block;
+	}
+	.desktop-view {
+	  display: none;
+	}
+  }
+
+  
+@media (min-width: 650px) {
+	.mobile-view {
+	  display: none;
+	}
+	.desktop-view {
+	  display: block;
+	}
+  }
+  
