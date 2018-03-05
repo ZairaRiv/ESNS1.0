@@ -8,8 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class BigboxComponent implements OnInit {
 
   constructor() { }
-  @Input() title:string="";
-  @Input() color:string="";
+  @Input() title: string = "";
+  @Input() color: string = "";
 
   ngOnInit() {
   }

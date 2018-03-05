@@ -49,6 +49,11 @@
         font-size: 100px;
         font-weight:  500;
     }
+    .intro {
+        background-size: cover;
+        background-attachment: scroll;
+        height: 100%;
+    }
 }
   
 @media (min-width: 650px) {

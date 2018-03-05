@@ -3,3 +3,6 @@ ng g c components/NEWCOMPONENTNAME --module app
 ng serve --preserve-symlinks
 
 Routes are in app.module.ts
+
+Production build:
+ng build --prod --build-optimizer

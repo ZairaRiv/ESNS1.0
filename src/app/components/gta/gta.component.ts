@@ -8,16 +8,19 @@ import { Component, OnInit } from '@angular/core';
 export class GtaComponent implements OnInit {
 
   constructor() { }
-  private step:number = 0;
+  private currentStep = 1;
+  private previousStep = 0;
+
   ngOnInit() {
   }
 
-  Increment() {
-    this.step++;
+  gotoStep(nextstep) {
+    this.previousStep = this.currentStep;
+    this.currentStep = nextstep;
   }
 
-  CurrentStep(){
-    return this.step;
+  getStep()  {
+    return this.currentStep;
   }
 
 }

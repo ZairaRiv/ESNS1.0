@@ -34,6 +34,7 @@ import { GtaComponent } from './components/gta/gta.component';
 import { InjuryComponent } from './components/injury/injury.component';
 import { FloodComponent } from './components/flood/flood.component';
 import { BigboxComponent } from './designcomponents/bigbox/bigbox.component';
+import { OptionsbuttonsComponent } from './designcomponents/optionsbuttons/optionsbuttons.component';
 
 const appRoutes: Routes = [
 	{ path: '', component:MainComponent},
@@ -71,7 +72,8 @@ const appRoutes: Routes = [
     GtaComponent,
     InjuryComponent,
     FloodComponent,
-    BigboxComponent
+    BigboxComponent,
+    OptionsbuttonsComponent
   ],
   imports: [
     BrowserModule,

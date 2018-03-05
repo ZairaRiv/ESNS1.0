@@ -11,16 +11,14 @@ export class GeolocateComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    if(navigator.geolocation){
+    if ( navigator.geolocation ) {
       navigator.geolocation.getCurrentPosition(position => {
         this.location = position.coords;
-        
-        console.log(position.coords); 
-        console.log(position.coords.latitude +","+position.coords.longitude);
+        console.log(position.coords);
+        console.log(position.coords.latitude + ',' + position.coords.longitude);
         this.router.navigate(['/reportType']);
       },
     error => {
-      console.log("error on geolocation");
     },
   {
     enableHighAccuracy: false,
