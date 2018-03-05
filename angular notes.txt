@@ -6,6 +6,3 @@ Routes are in app.module.ts
 
 Production build:
 ng build --prod --build-optimizer
-
-test for Zaira
-Wow you are cool 
