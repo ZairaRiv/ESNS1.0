@@ -11,6 +11,7 @@
 	position: relative;
 	float: left;
 	text-align: center;
+<<<<<<< HEAD
 	cursor: pointer; 
 	top: 50%;
 }
@@ -19,3 +20,8 @@
    text-align: center;
    padding-left: 35%;
 }
+=======
+	cursor: pointer;
+}
+
+>>>>>>> f8115f1446077d75f7d4be74d8df198ac9bbc9b9
