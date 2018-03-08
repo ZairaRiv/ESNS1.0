@@ -1,3 +1,20 @@
-<p>
-  flood works!
-</p>
+
+<div *ngIf="getStep()==1">
+	<app-bigbox title="Are you injured?" color="#7380C9"></app-bigbox>
+	<app-optionsbuttons title="Yes" (click)="gotoStep(2)"></app-optionsbuttons>
+	<app-optionsbuttons title="No" (click)="gotoStep(3)"></app-optionsbuttons>
+</div>
+
+<div *ngIf="getStep()==2">
+	<app-bigbox title="Call 911 Immediately" color="red"></app-bigbox>
+</div>
+
+<div *ngIf="getStep()==3">
+	<app-bigbox title="Gather Information Before Calling 911" color="#7380C9"></app-bigbox>
+	<div>
+		<ul>
+			<li>Recheck where this connects to</li>
+		</ul>
+	</div>>
+</div>
+

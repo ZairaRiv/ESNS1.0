@@ -12,4 +12,10 @@
 	float: left;
 	text-align: center;
 	cursor: pointer; 
+	top: 50%;
+}
+
+.buttonHolder{
+   text-align: center;
+   padding-left: 35%;
 }

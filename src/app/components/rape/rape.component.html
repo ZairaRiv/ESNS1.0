@@ -1,3 +1,21 @@
-<p>
-  The module works 
-</p>
+
+<div *ngIf="getStep()==1">
+	<app-bigbox title="Are You Injured?" color="#7380C9"></app-bigbox>
+	<app-optionsbuttons title="Yes" (click)="gotoStep(2)"></app-optionsbuttons>
+	<app-optionsbuttons title="No" (click)="gotoStep(3)"></app-optionsbuttons>
+</div>
+
+<div *ngIf="getStep()==2">
+	<app-bigbox title="Call 911 Immediately" color="red"></app-bigbox>
+</div>
+
+<div *ngIf="getStep()==3">
+	<app-bigbox title="Gather Information Before Calling 911" color="#7380C9"></app-bigbox>
+	<div>
+		<ul>
+      <li>Clothing you were wearing</li>
+      <li>Rape has several other steps that need to be added in as well</li>
+		</ul>
+	</div>>
+</div>
+
