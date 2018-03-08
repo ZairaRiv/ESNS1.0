@@ -1,21 +1,33 @@
 
 <div *ngIf="getStep()==1">
-	<app-bigbox title="Are You Injured?" color="#7380C9"></app-bigbox>
-	<app-optionsbuttons title="Yes" (click)="gotoStep(2)"></app-optionsbuttons>
-	<app-optionsbuttons title="No" (click)="gotoStep(3)"></app-optionsbuttons>
-</div>
-
-<div *ngIf="getStep()==2">
-	<app-bigbox title="Call 911 Immediately" color="red"></app-bigbox>
-</div>
-
-<div *ngIf="getStep()==3">
-	<app-bigbox title="Gather Information Before Calling 911" color="#7380C9"></app-bigbox>
-	<div>
-		<ul>
-      <li>Clothing you were wearing</li>
-      <li>Rape has several other steps that need to be added in as well</li>
-		</ul>
-	</div>>
-</div>
-
+		<app-bigbox title="Did this just occur?" color="#7380C9"></app-bigbox>
+		<app-optionsbuttons title="Yes" (click)="gotoStep(2)"></app-optionsbuttons>
+		<app-optionsbuttons title="No" (click)="gotoStep(3)"></app-optionsbuttons>
+	</div>
+	
+	<div *ngIf="getStep()==2">
+		<app-bigbox title="Are you safe?" color="red"></app-bigbox>
+		<!-- will need an additional step figure out how-->
+		<!-- need yes and no option, look at drive-->
+	</div>
+	
+	<div *ngIf="getStep()==3">
+		<app-bigbox title="Gather Information Before Calling 911" color="#7380C9"></app-bigbox>
+		<div>
+			<ul>
+				<!-- hoping this is a form that can be integrated rather than output-->
+				<li>description of suspect</li>
+				<li>relation if any</li>
+				<li>Time/Date</li>
+				<li>sex acts</li>
+				<li>Clothing worn at the time</li>
+				<li>injuries</li>
+				<!-- will also need an external link from this page-->
+				<li>Additional Resources page</li>
+				<!-- will also need an external link from this page-->
+				<li>time <48 hours will need to add hospital locations</li>
+			</ul>
+		</div>>
+	</div>
+	
+	
