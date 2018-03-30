@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
-import { HttpModule } from '@angular/http'; 
+import { HttpModule } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UsersComponent } from './components/users/users.component';
@@ -35,18 +36,21 @@ import { InjuryComponent } from './components/injury/injury.component';
 import { FloodComponent } from './components/flood/flood.component';
 import { BigboxComponent } from './designcomponents/bigbox/bigbox.component';
 import { OptionsbuttonsComponent } from './designcomponents/optionsbuttons/optionsbuttons.component';
+import { LoginComponent } from './components/login/login.component';
+
 
 const appRoutes: Routes = [
-	{ path: '', component:MainComponent},
+  { path: '', component:MainComponent},
   { path: 'about', component:AboutComponent},
   { path: 'report', component:ReportComponent},
   { path: 'reportType', component:ReportTypeComponent},
-  { path: 'shooting', component:ShootingComponent}, 
-  { path: 'rape', component:RapeComponent}, 
-  { path: 'stalking', component:StalkingComponent}, 
-  { path: 'gta', component:GtaComponent}, 
-  { path: 'injury', component:InjuryComponent}, 
-  { path: 'flood', component:FloodComponent}
+  { path: 'shooting', component:ShootingComponent},
+  { path: 'rape', component:RapeComponent},
+  { path: 'stalking', component:StalkingComponent},
+  { path: 'gta', component:GtaComponent},
+  { path: 'injury', component:InjuryComponent},
+  { path: 'flood', component:FloodComponent},
+  { path: 'login', component:LoginComponent}
 ]
 
 @NgModule({
@@ -73,15 +77,17 @@ const appRoutes: Routes = [
     InjuryComponent,
     FloodComponent,
     BigboxComponent,
-    OptionsbuttonsComponent
+    OptionsbuttonsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-	MaterialModule,
-	RouterModule.forRoot(appRoutes)
+    HttpClientModule,
+    MaterialModule,
+    RouterModule.forRoot(appRoutes)
   ],
   // services
   providers: [DataService, MediaMatcher],

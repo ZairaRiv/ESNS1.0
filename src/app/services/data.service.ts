@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class DataService {
 
-  constructor(public http: Http) {
+  constructor(public http: Http, private httpc: HttpClient) {
     console.log('Data Service Connected.');
     console.log('Data Service intializing test data.');
    }
+
+   private dataUrl = 'https://fast.esns.life';
 
    private _data: any;
 
@@ -46,6 +49,12 @@ export class DataService {
      ];
      return reportTypes;
    }
+
+   getUser(username, password) {
+     return this.httpc.post(this.dataUrl + '/login_api.php', {
+       username,
+       password
+   })
 
 }
 

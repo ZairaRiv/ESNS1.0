@@ -1,3 +1,8 @@
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+
 <div class="esns_header">
   <!-- side nav for mobile devices -->
   <div class="mobile-menu">
@@ -17,11 +22,11 @@
           <div class="expansion-panels" *ngFor="let item of getMenu()" routerLink="/{{item.link}}">{{item.title}}</div>
       </mat-expansion-panel>
     </mat-accordion>
-   
-    
-     
+
+
+
   </div>
-  
+
   <div class="desktop-menu">
   <!-- top nav for desktop devices -->
     <div class="menu-container desktop-menu">
@@ -34,8 +39,8 @@
         </mat-toolbar>
     </div>
   </div>
-    
-  
+
+
   <!-- always there report button -->
   <a href="/report">
     <button mat-raised-button color="warn" class="reportBtn">Report</button>
