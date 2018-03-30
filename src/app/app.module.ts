@@ -39,6 +39,13 @@ import { OptionsbuttonsComponent } from './designcomponents/optionsbuttons/optio
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from "./auth.guard";
 import { AdminComponent } from './components/admin/admin.component';
+import { FindstudentComponent } from './components/findstudent/findstudent.component';
+import { MapComponent } from './components/map/map.component';
+import { SchoolComponent } from './components/school/school.component';
+import { MessagingComponent } from './components/messaging/messaging.component';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { FindstudentpublicComponent } from './components/findstudentpublic/findstudentpublic.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 const appRoutes: Routes = [
   { path: '', component:MainComponent},
@@ -53,7 +60,13 @@ const appRoutes: Routes = [
   { path: 'injury', component:InjuryComponent},
   { path: 'flood', component:FloodComponent},
   { path: 'login', component:LoginComponent},
-  { path: 'admin', component:AdminComponent, canActivate: [AuthGuard]}
+  { path: 'logout', component:LogoutComponent},
+  { path: 'findstudentpublic', component:FindstudentpublicComponent},
+  { path: 'admin', component:AdminComponent, canActivate: [AuthGuard]},
+  { path: 'map', component:MapComponent, canActivate: [AuthGuard]},
+  { path: 'school', component:SchoolComponent, canActivate: [AuthGuard]},
+  { path: 'findstudent', component:FindstudentComponent, canActivate: [AuthGuard]},
+  { path: 'messaging', component:MessagingComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -83,6 +96,12 @@ const appRoutes: Routes = [
     OptionsbuttonsComponent,
     LoginComponent,
     AdminComponent,
+    FindstudentComponent,
+    MapComponent,
+    SchoolComponent,
+    MessagingComponent,
+    FindstudentpublicComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
