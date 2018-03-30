@@ -12,8 +12,8 @@ export class DataService {
    }
 
    private dataUrl = 'https://fast.esns.life';
-
    private _data: any;
+   loggedInStatus = false;
 
    public store (data: any) {
      this._data = data;
@@ -31,9 +31,9 @@ export class DataService {
    getMenu() {
     const menu: MenuItems[] = [
       {link: '', title: 'Home'},
-      {link: 'about', title: 'About'},
-      {link: 'contact', title: 'Contact'},
-      {link: 'admin', title: 'Admin'}
+      {link: '/about', title: 'About'},
+      {link: '/contact', title: 'Contact'},
+      {link: '/login', title: 'Login'}
     ];
     return menu;
    }
@@ -54,11 +54,17 @@ export class DataService {
      return this.httpc.post(this.dataUrl + '/login_api.php', {
        username,
        password
-   })
+    });
+  }
 
+  setLoggedIn(value: boolean) {
+    this.loggedInStatus = value;
+  }
+
+  get isLoggedIn() {
+    return this.loggedInStatus;
+  }
 }
-
-
 
 
 interface MenuItems {

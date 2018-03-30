@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,11 +8,11 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
   }
+
 
   loginUser(event) {
     event.preventDefault();
@@ -23,10 +24,11 @@ export class LoginComponent implements OnInit {
     console.log(password);
 
     this.dataService.getUser(username, password).subscribe(data => {
-      if (data.success) {
-        // go to admin page
+      if ((data as any).success) {
+        this.router.navigate(['admin']);
+        this.dataService.setLoggedIn(true);
       } else {
-        window.alert(data.message);
+        window.alert((data as any).message);
       }
     });
   }

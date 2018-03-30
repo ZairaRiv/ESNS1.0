@@ -37,7 +37,8 @@ import { FloodComponent } from './components/flood/flood.component';
 import { BigboxComponent } from './designcomponents/bigbox/bigbox.component';
 import { OptionsbuttonsComponent } from './designcomponents/optionsbuttons/optionsbuttons.component';
 import { LoginComponent } from './components/login/login.component';
-
+import { AuthGuard } from "./auth.guard";
+import { AdminComponent } from './components/admin/admin.component';
 
 const appRoutes: Routes = [
   { path: '', component:MainComponent},
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
   { path: 'gta', component:GtaComponent},
   { path: 'injury', component:InjuryComponent},
   { path: 'flood', component:FloodComponent},
-  { path: 'login', component:LoginComponent}
+  { path: 'login', component:LoginComponent},
+  { path: 'admin', component:AdminComponent, canActivate: [AuthGuard]}
 ]
 
 @NgModule({
@@ -78,7 +80,8 @@ const appRoutes: Routes = [
     FloodComponent,
     BigboxComponent,
     OptionsbuttonsComponent,
-    LoginComponent
+    LoginComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +93,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   // services
-  providers: [DataService, MediaMatcher],
+  providers: [DataService, MediaMatcher, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
