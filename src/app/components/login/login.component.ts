@@ -16,18 +16,17 @@ export class LoginComponent implements OnInit {
 
   loginUser(event) {
     event.preventDefault();
-    console.log(event);
+    // console.log(event);
     const target = event.target;
     const username = target.querySelector('#username').value;
     const password = target.querySelector('#password').value;
-    console.log(username);
-    console.log(password);
 
     this.dataService.getUser(username, password).subscribe(data => {
       if ((data as any).success) {
         this.router.navigate(['admin']);
         this.dataService.setLoggedIn(true);
       } else {
+        this.dataService.setLoggedIn(false);
         window.alert((data as any).message);
       }
     });

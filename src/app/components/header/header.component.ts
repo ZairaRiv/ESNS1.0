@@ -23,6 +23,9 @@ export class HeaderComponent implements OnInit {
   fillerNav = Array(50).fill(0).map((_, i) => `Nav Item ${i + 1}`);
 
   getMenu() {
+    if (this.dataService.isLoggedIn) {
+      return this.dataService.getAdminMenu();
+    }
     return this.dataService.getMenu();
   }
 

@@ -44,6 +44,7 @@ const appRoutes: Routes = [
   { path: '', component:MainComponent},
   { path: 'about', component:AboutComponent},
   { path: 'report', component:ReportComponent},
+  { path: 'contact', component:ContactComponent},
   { path: 'reportType', component:ReportTypeComponent},
   { path: 'shooting', component:ShootingComponent},
   { path: 'rape', component:RapeComponent},
@@ -53,7 +54,7 @@ const appRoutes: Routes = [
   { path: 'flood', component:FloodComponent},
   { path: 'login', component:LoginComponent},
   { path: 'admin', component:AdminComponent, canActivate: [AuthGuard]}
-]
+];
 
 @NgModule({
   declarations: [
@@ -81,7 +82,7 @@ const appRoutes: Routes = [
     BigboxComponent,
     OptionsbuttonsComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

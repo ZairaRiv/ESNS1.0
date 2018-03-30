@@ -33,7 +33,17 @@ export class DataService {
       {link: '', title: 'Home'},
       {link: '/about', title: 'About'},
       {link: '/contact', title: 'Contact'},
-      {link: '/login', title: 'Login'}
+      {link: '/login', title: 'Admin'}
+    ];
+    return menu;
+   }
+
+   getAdminMenu() {
+    const menu: MenuItems[] = [
+      {link: '', title: 'Home'},
+      {link: '/findStudent', title: 'Find Student'},
+      {link: '/messaging', title: 'Messaging'},
+      {link: '/logout', title: 'Logout'}
     ];
     return menu;
    }
@@ -62,6 +72,7 @@ export class DataService {
   }
 
   get isLoggedIn() {
+    console.log('Logged in?: ' + this.loggedInStatus);
     return this.loggedInStatus;
   }
 }
