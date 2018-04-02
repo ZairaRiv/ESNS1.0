@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class LogoutComponent implements OnInit {
 
   constructor(private dataService: DataService, private router: Router) {
-    this.dataService.setLoggedIn(false);
+    this.dataService.setLogOut();
     this.router.navigate(['']);
    }
 

@@ -13,7 +13,7 @@ export class DataService {
 
    private dataUrl = 'https://fast.esns.life';
    private _data: any;
-   loggedInStatus = false;
+   private currentUser: any;
 
    public store (data: any) {
      this._data = data;
@@ -69,15 +69,24 @@ export class DataService {
     });
   }
 
-  setLoggedIn(value: boolean) {
-    this.loggedInStatus = value;
+  get isLoggedIn() {
+    if (localStorage.getItem('currentUser') === null) {
+      return false;
+    } else {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (this.currentUser.adminlevel > 0) {
+        return true;
+      }
+    }
+    return false;
   }
 
-  get isLoggedIn() {
-    console.log('Logged in?: ' + this.loggedInStatus);
-    return this.loggedInStatus;
+  setLogOut() {
+    localStorage.removeItem('currentUser');
   }
 }
+
+
 
 
 interface MenuItems {
