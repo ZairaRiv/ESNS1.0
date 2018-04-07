@@ -7,8 +7,8 @@
 	
 	<div *ngIf="getStep()==2">
 		<app-bigbox title="Are you safe?" color="red"></app-bigbox>
-		<!-- will need an additional step figure out how-->
-		<!-- need yes and no option, look at drive-->
+		<app-optionsbuttons title = "Yes" (click)= "gotoStep(4)"></app-optionsbuttons>
+		<app-optionsbuttons title = "No" (click) = "gotoStep(5)"></app-optionsbuttons>
 	</div>
 	
 	<div *ngIf="getStep()==3">
@@ -30,4 +30,22 @@
 		</div>>
 	</div>
 	
+	<div *ngIf="getStep()==4">
+		<div>
+			<ul>
+		  <li>Need to link to location options to run away</li>
+		  <li>For sense of safety tell them police are notified your location</li>
+			</ul>
+		</div>>
+	</div>
 	
+	<!-- will need to be based on time to know hours of buildings open-->
+	<div *ngIf="getStep()==5">
+		<app-geolocate></app-geolocate>
+		<div>
+			<ul>
+		  <li>Recommend safe place</li>
+		  <li>Output nearest blue box based on location</li>
+			</ul>
+		</div>>
+	</div>
