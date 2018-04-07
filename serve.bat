@@ -1,0 +1,1 @@
+ng serve --preserve-symlinks --disable-host-check --ssl 1 --ssl-key key.pem --ssl-cert cert.pem

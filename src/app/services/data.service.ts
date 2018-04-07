@@ -63,7 +63,7 @@ export class DataService {
    }
 
    getUser(username, password) {
-     return this.httpc.post(this.dataUrl + '/login_api.php', {
+     return this.httpc.post(this.dataUrl + '/services/login_api.php', {
        username,
        password
     });
