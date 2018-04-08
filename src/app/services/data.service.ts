@@ -69,6 +69,10 @@ export class DataService {
     });
   }
 
+  getUserCount() {
+    return this.httpc.get(this.dataUrl + '/services/getstudentcount_api.php');
+  }
+
   get isLoggedIn() {
     if (localStorage.getItem('currentUser') === null) {
       return false;

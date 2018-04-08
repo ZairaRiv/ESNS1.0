@@ -46,6 +46,7 @@ import { MessagingComponent } from './components/messaging/messaging.component';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { FindstudentpublicComponent } from './components/findstudentpublic/findstudentpublic.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { InfoboxComponent } from './designcomponents/dashboard/infobox/infobox.component';
 
 const appRoutes: Routes = [
   { path: '', component:MainComponent},
@@ -101,7 +102,8 @@ const appRoutes: Routes = [
     SchoolComponent,
     MessagingComponent,
     FindstudentpublicComponent,
-    LogoutComponent
+    LogoutComponent,
+    InfoboxComponent
   ],
   imports: [
     BrowserModule,
