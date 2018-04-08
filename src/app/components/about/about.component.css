@@ -1,0 +1,131 @@
+.intro {
+    position: relative;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("https://i.imgur.com/sD1udLh.jpg")no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+    overflow: hidden;
+}
+
+.full-bg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+	overflow: hidden;
+	padding-top: 20%;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    /*border: 3px solid #73AD21;*/
+    text-align: center;
+    color: white;
+}
+
+.title {
+    text-shadow: 2px 2px black;
+}
+
+.subtitle {
+    font-size: 24px;
+    font-weight: 300;
+    text-shadow: 1px 1px black;
+}
+
+.report-btn-spacer {
+    height: 120px;
+}
+
+.large-report-btn {
+    width: 220px;
+    height: 100px;
+    font-size: 30px;
+}
+
+@media (max-width: 650px) {
+    .title {
+        font-size: 100px;
+        font-weight:  500;
+    }
+    .intro {
+        background-size: cover;
+        background-attachment: scroll;
+        height: 100%;
+    }
+}
+  
+@media (min-width: 650px) {
+    .title {
+        font-size: 142px;
+        font-weight:  500;
+    }
+}
+  
+.main {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+    text-align: center;
+}
+
+.fancy-line {
+    width: 100%; 
+    border-bottom: 2px solid #a7a7a7; 
+    text-align: center
+}
+
+.bold {
+    font-size: 64px;
+    font-weight: 700;
+    color: #3f51b5;
+    background: white;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.plain-text {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    color: #424242;
+	margin-bottom: 150px;
+	display: block;
+	width: 100%;
+}
+
+
+img {
+    border-radius: 5px 5px 0 0;
+}
+
+
+/* mobile view */
+@media (max-width: 650px) {
+    .bold {
+        font-size: 32px;
+    }
+    .fancy-line {
+        height: 16px; 
+    }
+    .plain-text {
+        margin-top: 80px;
+	}
+}
+  
+
+/* desktop view */
+@media (min-width: 650px) {
+    .bold {
+        font-size: 48px;
+    }
+    .fancy-line {
+        height: 24px; 
+    }
+    .plain-text {
+        margin-top: 100px;
+	}
+}
+  
+
