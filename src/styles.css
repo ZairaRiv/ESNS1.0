@@ -11,7 +11,7 @@ html,body {
 
 body {
     font-family: 'Roboto', sans-serif;
-    font-weight: 300; 
+    font-weight: 300;
 }
 
 div.esns_body {
@@ -21,6 +21,22 @@ div.esns_body {
 
 /* remove all hyperlink colors */
 a {
-    color: inherit; 
-    text-decoration: inherit; 
+    color: inherit;
+    text-decoration: inherit;
+  }
+
+  h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 70px;
+    line-height: 72px;
+  }
+
+  h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 40px;
+  }
+
+  h3 {
+      font-size: 20px;
+      line-height: 22px;
   }
