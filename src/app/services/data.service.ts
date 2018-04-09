@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -80,6 +80,20 @@ export class DataService {
 
   getSchoolCount() {
     return this.httpc.get(this.dataUrl + '/services/getschoolcount_api.php');
+  }
+
+  sendText(phNum, message) {
+    const obj = [ {
+      'phoneNumber': phNum,
+      'message': message
+    }];
+
+    // Authorization: Basic Y2JmODNiZTMxYjRmOjQ4MTBlMGI0YTJiZTFlNGE=
+    let headers = new HttpHeaders();
+    const usernamepassword = 'cbf83be31b4f:4810e0b4a2be1e4a';
+    // btoa turns the usernamepassword into Y2JmO....
+    headers = headers.append('Authorization', 'Basic ' + btoa(usernamepassword));
+    return this.httpc.post('https://api.callfire.com/v2/texts?', obj, {headers: headers});
   }
 
   getSchools() {

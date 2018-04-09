@@ -9,6 +9,7 @@ import { DataService } from '../../services/data.service';
 export class MessagingComponent implements OnInit {
 
   public emailSending = false;
+  public textSending = false;
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
@@ -33,6 +34,18 @@ export class MessagingComponent implements OnInit {
         this.emailSending = false;
       }
     });
+  }
 
+  sendText() {
+    this.textSending = true;
+    const obj = JSON.parse(localStorage.getItem('currentStudent'));
+    console.log(obj);
+    this.dataService.sendText(obj.phoneNumber, 'Testing 123').subscribe(data => {
+      if ((data as any).httpStatusCode !== '401') {
+      } else {
+        window.alert((data as any).message);
+      }
+      this.textSending = false;
+    });
   }
 }
