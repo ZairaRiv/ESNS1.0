@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-school',
   templateUrl: './school.component.html',
-  styleUrls: ['./school.component.css', '../../designcomponents/dashboard/infobox/infobox.component.css']
+  styleUrls: ['./school.component.css']
 })
 export class SchoolComponent implements OnInit {
 
@@ -17,6 +17,7 @@ export class SchoolComponent implements OnInit {
   myControl: FormControl = new FormControl();
   filteredOptions: Observable<string[]>;
   private currentSchool: any;
+  public schoolSelected: boolean; // display school or search
 
   constructor(private dataService: DataService, private router: Router) {
     this.getCurrentSchool();
@@ -30,8 +31,12 @@ export class SchoolComponent implements OnInit {
     this.currentSchool = {
       'schoolName': 'No School Selected'
     };
+
     if (localStorage.getItem('currentSchool') !== null)  {
       this.currentSchool = JSON.parse(localStorage.getItem('currentSchool'));
+      this.schoolSelected = true;
+    } else {
+      this.schoolSelected = false;
     }
     console.log(this.currentSchool);
   }
@@ -48,6 +53,11 @@ export class SchoolComponent implements OnInit {
     });
   }
 
+  showSchoolSearch() {
+    this.schoolSelected = false;
+    this.currentSchool = {};
+  }
+
   filterSchools(val: string): string[] {
     return this.schools.filter(
       option => this.matches(option, val));
@@ -60,6 +70,7 @@ export class SchoolComponent implements OnInit {
     if (typeof val !== 'string') {
       this.currentSchool = val;
       localStorage.setItem('currentSchool', JSON.stringify(val));
+      this.schoolSelected = true;
       this.myControl.reset();
       return;
     }

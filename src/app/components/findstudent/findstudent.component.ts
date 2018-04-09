@@ -5,6 +5,7 @@ import {startWith} from 'rxjs/operators/startWith';
 import {map} from 'rxjs/operators/map';
 import {FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
+import { MockNgModuleResolver } from '@angular/compiler/testing';
 
 @Component({
   selector: 'app-findstudent',
@@ -13,34 +14,34 @@ import { Router } from '@angular/router';
 })
 export class FindstudentComponent implements OnInit {
 
-  private students: any;
   myControl: FormControl = new FormControl();
   filteredOptions: Observable<string[]>;
-  private currentStudent: any;
-  private currentSchool: any;
+  public studentSelected: boolean;
 
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
-    this.getCurrentSchool();
+    this.dataService.getCurrentSchool();
     this.getStudents();
+
+    if (localStorage.getItem('currentStudent') !== null)  {
+      this.studentSelected = true;
+    } else {
+      this.studentSelected = false;
+    }
+    console.log(this.studentSelected);
   }
 
-  getCurrentSchool() {
-    this.currentSchool = {
-      'schoolName': 'No School Selected'
-    };
-    if (localStorage.getItem('currentSchool') !== null)  {
-      this.currentSchool = JSON.parse(localStorage.getItem('currentSchool'));
-    }
-    console.log(this.currentSchool);
+  public getStudentName() {
+    const name = JSON.parse(localStorage.getItem('currentStudent'));
+    return name.firstName + ' ' + name.lastName;
   }
 
   getStudents() {
-    this.dataService.getStudents(this.currentSchool.schoolID).subscribe(data => {
+    this.dataService.getStudents().subscribe(data => {
       if ((data as any)) {
         console.log(data);
-        this.students = data;
+        this.dataService.students = data;
         this.filteredOptions = this.myControl.valueChanges.pipe(
           startWith(''),
           map(val => this.filterStudents(val))
@@ -50,7 +51,7 @@ export class FindstudentComponent implements OnInit {
   }
 
   filterStudents(val: string): string[] {
-    return this.students.filter(
+    return this.dataService.students.filter(
       option => this.matches(option, val));
   }
 
@@ -59,10 +60,9 @@ export class FindstudentComponent implements OnInit {
     // if val is suddenly not a string, that means a selection was made
     // this is some weird bullshit by typescript
     if (typeof val !== 'string') {
-      this.currentStudent = val;
       localStorage.setItem('currentStudent', JSON.stringify(val));
-      console.log(this.currentStudent.lastName);
       this.myControl.reset();
+      this.studentSelected = true;
       return;
     }
     booly = option.firstName.toLowerCase().includes(val.toLowerCase());
@@ -71,5 +71,9 @@ export class FindstudentComponent implements OnInit {
 
   displayFn(student): string {
     return student ? student.firstName + ' ' + student.lastName : student;
+  }
+
+  showStudentSearch() {
+    this.studentSelected = false;
   }
 }

@@ -1,45 +1,27 @@
-<app-header></app-header>
-
-<div class="flex-container">
-    <div style="background-color: SlateBlue;">
-        <div id="parent">
-            <div class="child">
-                <img src="https://www.esns.life/images/university.svg" class="icon">
-                <br>
-            </div>
-            <div class="child">
-					<div class="infobox-header">
-							Current School Selected:
-						</div>
-						<div class="infobox-desc">
-							{{currentSchool.schoolName}}
-						</div>
-            </div>
-        </div>
-	</div>
-</div>
-
-
-
-<div class="flex-container">
-	<div style="background-color: slateblue;">
-		<div style="align-content: center; text-align: center; width: 100%">
-			<form class="example-form">
-				<mat-form-field class="example-full-width">
-					<input type="text" placeholder="Find School..." aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" (selectItem)="selectedItem($event)">
-					<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
-					mat-input-name="autocompleteField" mat-select-on-match required
-					[displayWith]="displayFn">
-						<mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-							{{ option.schoolName }}
-						</mat-option>
-					</mat-autocomplete>
-				</mat-form-field>
-			</form>
+<div class="second" style="background-color: DarkBlue ;" *ngIf="schoolSelected">
+	<div class="third" id="parent">
+		<div class="child">
+			<div class="infobox-desc">
+				{{currentSchool.schoolName}}
+			</div>
+			<div class="selectNew" (click)="showSchoolSearch()">Change Schools</div>
 		</div>
 	</div>
 </div>
 
-
-
-<app-footer></app-footer>
+<div class="second" style="background-color: DarkBlue ;" *ngIf="!schoolSelected">
+	<div class="third" style="align-content: center; text-align: center; width: 100%">
+		<form class="example-form">
+			<mat-form-field class="example-full-width">
+				<input type="text" placeholder="Find School..." aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto"
+				 (selectItem)="selectedItem($event)">
+				<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" mat-input-name="autocompleteField" mat-select-on-match required
+				 [displayWith]="displayFn">
+					<mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+						{{ option.schoolName }}
+					</mat-option>
+				</mat-autocomplete>
+			</mat-form-field>
+		</form>
+	</div>
+</div>

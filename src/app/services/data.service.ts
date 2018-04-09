@@ -14,6 +14,7 @@ export class DataService {
    private dataUrl = 'https://fast.esns.life';
    private _data: any;
    private currentUser: any;
+   public students: any;
 
    public store (data: any) {
      this._data = data;
@@ -45,6 +46,7 @@ export class DataService {
       {link: '/school', title: 'School'},
       {link: '/findstudent', title: 'Find Student'},
       {link: '/messaging', title: 'Messaging'},
+      {link: '/admin', title: 'Admin'},
       {link: '/logout', title: 'Logout'}
     ];
     return menu;
@@ -81,7 +83,9 @@ export class DataService {
     return this.httpc.get(this.dataUrl + '/services/getschools_api.php');
   }
 
-  getStudents(schoolID) {
+  getStudents() {
+    const schoolID = this.getCurrentSchool().schoolID;
+    console.log(schoolID);
     return this.httpc.get(this.dataUrl + '/services/getstudents_api.php?schoolID=' + schoolID);
   }
 
@@ -99,6 +103,17 @@ export class DataService {
 
   setLogOut() {
     localStorage.removeItem('currentUser');
+  }
+
+  getCurrentSchool() {
+    let currentSchool = {
+      'schoolName': 'No School Selected',
+      'schoolID': '-1'
+    };
+    if (localStorage.getItem('currentSchool') !== null)  {
+      currentSchool = JSON.parse(localStorage.getItem('currentSchool'));
+    }
+    return currentSchool;
   }
 }
 
