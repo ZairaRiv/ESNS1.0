@@ -1,13 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../../../services/data.service';
-import { Observable } from 'rxjs/Observable';
 import { timer } from 'rxjs/observable/timer';
 import { take, count } from 'rxjs/operators';
 import { range } from 'rxjs/observable/range';
-
-import 'rxjs/add/observable/timer';
-import 'rxjs/add/operator/take';
-import 'rxjs/add/operator/map';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-infobox',

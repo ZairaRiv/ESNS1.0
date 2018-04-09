@@ -77,6 +77,10 @@ export class DataService {
     return this.httpc.get(this.dataUrl + '/services/getschoolcount_api.php');
   }
 
+  getSchools() {
+    return this.httpc.get(this.dataUrl + '/services/getschools_api.php');
+  }
+
   get isLoggedIn() {
     if (localStorage.getItem('currentUser') === null) {
       return false;
