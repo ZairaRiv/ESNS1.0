@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-messaging',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessagingComponent implements OnInit {
 
-  constructor() { }
+  public emailSending = false;
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
   }
@@ -17,5 +19,20 @@ export class MessagingComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  sendEmail() {
+    this.emailSending = true;
+    const obj = JSON.parse(localStorage.getItem('currentStudent'));
+    console.log(obj);
+    this.dataService.sendEmail('ESNS Test', obj.Email, 'This is only a test.', obj.firstName + ' ' + obj.lastName).subscribe(data => {
+      if ((data as any).success) {
+        this.emailSending = false;
+      } else {
+        window.alert((data as any).message);
+        this.emailSending = false;
+      }
+    });
+
   }
 }

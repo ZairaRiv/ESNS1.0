@@ -71,7 +71,7 @@ export class DataService {
     });
   }
 
-  getSendEmail(subject, to, message, name) {
+  sendEmail(subject, to, message, name) {
     return this.httpc.post(this.dataUrl + '/services/sendemail_api.php', {
       subject, to, message, name
     });

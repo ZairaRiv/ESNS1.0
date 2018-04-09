@@ -1,16 +1,23 @@
-<div class="second" style="background-color: DarkBlue ;" *ngIf="studentSelected()">
-	<div class="third" id="parent">
-		<div class="child">
-			<img src="https://www.esns.life/images/email.svg" style="width: 150px">
+<div class="flex-container" *ngIf="studentSelected()">
+
+	<div class="second selectNew" style="background-color: DarkBlue;" (click)="sendEmail()" *ngIf="!emailSending">
+		<div class="third" id="parent">
+			<div>
+				<img src="https://www.esns.life/images/email.svg" style="width: 150px">
+			</div>
 		</div>
 	</div>
-</div>
 
-<div class="second" style="background-color: DarkBlue ;" *ngIf="studentSelected()">
-	<div class="third" id="parent">
-		<div class="child">
-			<div class="child">
-				<img src="https://www.esns.life/images/text.svg" style="width: 150px">
+	<div class="second selectNew" style="background-color: DarkBlue;" (click)="sendEmail()" *ngIf="emailSending">
+		<app-gears></app-gears>
+	</div>
+
+	<div class="second selectNew" style="background-color: DarkBlue;" (click)="sendText()">
+		<div class="third" id="parent">
+			<div>
+				<div class="child">
+					<img src="https://www.esns.life/images/text.svg" style="width: 150px">
+				</div>
 			</div>
 		</div>
 	</div>

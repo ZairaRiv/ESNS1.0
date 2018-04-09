@@ -47,6 +47,7 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { FindstudentpublicComponent } from './components/findstudentpublic/findstudentpublic.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { InfoboxComponent } from './designcomponents/dashboard/infobox/infobox.component';
+import { GearsComponent } from './designcomponents/gears/gears.component';
 
 const appRoutes: Routes = [
   { path: '', component:MainComponent},
@@ -103,7 +104,8 @@ const appRoutes: Routes = [
     MessagingComponent,
     FindstudentpublicComponent,
     LogoutComponent,
-    InfoboxComponent
+    InfoboxComponent,
+    GearsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,71 +1,74 @@
 /** for admin dashboard */
 
 .flex-container {
-	display: flex;
-	flex-wrap: wrap;
-	margin: 20px;
-	color: white;
-	justify-content: center;
-	align-items: center;
-	color: white;
-	flex-direction: row;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  flex-direction: row;
+}
 
-  .second, .flex-container > div {
-	padding-left: 20px;
-	padding-right: 20px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	margin: 10px;
-	flex: 0 1 270px;
-	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-	height: 170px;
-	max-width: 270px;
-  }
+.second,
+.flex-container > div {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 10px;
+  flex: 0 1 270px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  height: 170px;
+  max-width: 270px;
+}
 
-  .third, .flex-container > div > div {
-	display: inline-flex;
-	align-items: center;
-	vertical-align: middle;
-  }
+.third,
+.flex-container > div > div {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
 
-  .selectNew {
-	display:block;
-	width: 100%;
-	cursor: pointer;
-  }
+.selectNew {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
 
-  .icon {
-	max-width: 120px;
-	max-height: 120px;
-	margin-left: 20px;
-	margin-right: 20px;
-  }
+.icon {
+  max-width: 120px;
+  max-height: 120px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
 
-  .infobox-header {
-	font-size: 16px;
-	float: left;
-	text-align: center;
-  }
+.infobox-header {
+  font-size: 16px;
+  float: left;
+  text-align: center;
+}
 
-  .infobox-desc {
-	font-size: 40px;
-	clear: both;
-	text-align: center;
-  }
+.infobox-desc {
+  font-size: 40px;
+  clear: both;
+  text-align: center;
+}
 
-  #parent {
-	width: 100%;
-	height: 100%;
-	float: left;
-	text-align: center;
-  }
-  .child {
-	float: left;
-	margin-right: 5px;
-	text-align: center;
-	}
+#parent {
+  width: 100%;
+  height: 100%;
+  float: left;
+  text-align: center;
+}
 
-	.mat-input-element {
-	color: white;
+.child {
+  float: left;
+  margin-right: 5px;
+  text-align: center;
+}
+
+.mat-input-element {
+  color: white;
 }
