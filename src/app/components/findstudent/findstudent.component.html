@@ -1,3 +1,33 @@
-<app-header></app-header>
-Find the status of a student here (admin version)
-<app-footer></app-footer>
+<div class="second" style="background-color: DarkBlue ;" *ngIf="studentSelected">
+	<div class="third" id="parent">
+		<div class="child">
+			<div class="infobox-desc">
+				{{getStudentName()}}
+			</div>
+			<div class="selectNew" (click)="showStudentSearch()">
+				Change Student
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="second" style="background-color: DarkBlue ;" *ngIf="!studentSelected">
+	<div class="third" id="parent">
+		<div class="child">
+			<form class="example-form">
+				<mat-form-field>
+					<input type="text" placeholder="Find Student..." aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto"
+					 (selectItem)="selectedItem($event)">
+					<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" mat-input-name="autocompleteField" mat-select-on-match required
+					 [displayWith]="displayFn">
+						<mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+							{{ option.firstName }} {{ option.lastName }}
+						</mat-option>
+					</mat-autocomplete>
+				</mat-form-field>
+			</form>
+		</div>
+
+	</div>
+</div>

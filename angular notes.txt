@@ -5,9 +5,20 @@ ng serve
 	ng serve --preserve-symlinks
 
 To use local.esns.life:4200
-ng serve --preserve-symlinks --disable-host-check
+	ng serve --preserve-symlinks --disable-host-check
 
 Routes are in app.module.ts
 
 Production build:
-ng build --prod --build-optimizer
+	ng build --prod --build-optimizer
+
+Production build w/SSL https://local.esns.life:4200
+	serve.bat
+
+
+To install the SSL cert for local use:
+	Run both:
+		import_selfsigned_key.bat
+		import_selfsigned_key.reg
+
+	Restart Chrome if it was already running.

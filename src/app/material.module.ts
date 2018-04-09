@@ -15,7 +15,8 @@ import { MatButtonModule,
     MatCardModule,
     MatGridListModule
 } from '@angular/material';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
     imports: [
@@ -32,7 +33,10 @@ import { MatButtonModule,
         MatCardModule,
         MatGridListModule,
         MatInputModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
     exports: [
         BrowserModule,
@@ -48,7 +52,10 @@ import { MatButtonModule,
         MatCardModule,
         MatGridListModule,
         MatInputModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
 })
 

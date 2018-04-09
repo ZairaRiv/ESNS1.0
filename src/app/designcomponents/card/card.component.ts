@@ -9,10 +9,10 @@ export class CardComponent implements OnInit {
 
   constructor() { }
 
-  @Input() cardTitle1:string;
+  @Input() cardTitle1: string;
   @Input() cardText1: string;
   @Input() cardImage1: string;
-  @Input() cardTitle2:string;
+  @Input() cardTitle2: string;
   @Input() cardText2: string;
   @Input() cardImage2: string;
 
