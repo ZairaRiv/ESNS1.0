@@ -28,6 +28,10 @@
 				</mat-form-field>
 			</form>
 		</div>
+		<div class="child" *ngIf="showCancel()">
+			<br>
+			<a (click)="cancelStudentSearch()">cancel</a>
+		</div>
 
 	</div>
 </div>

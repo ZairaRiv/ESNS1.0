@@ -71,6 +71,12 @@ export class DataService {
     });
   }
 
+  getSendEmail(subject, to, message, name) {
+    return this.httpc.post(this.dataUrl + '/services/sendemail_api.php', {
+      subject, to, message, name
+    });
+  }
+
   getUserCount() {
     return this.httpc.get(this.dataUrl + '/services/getstudentcount_api.php');
   }
@@ -85,7 +91,7 @@ export class DataService {
 
   getStudents() {
     const schoolID = this.getCurrentSchool().schoolID;
-    console.log(schoolID);
+    console.log('sid' + schoolID);
     return this.httpc.get(this.dataUrl + '/services/getstudents_api.php?schoolID=' + schoolID);
   }
 

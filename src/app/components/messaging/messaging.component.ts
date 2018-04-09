@@ -12,4 +12,10 @@ export class MessagingComponent implements OnInit {
   ngOnInit() {
   }
 
+  studentSelected() {
+    if (localStorage.getItem('currentStudent') === null ) {
+      return false;
+    }
+    return true;
+  }
 }

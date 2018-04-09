@@ -75,5 +75,18 @@ export class FindstudentComponent implements OnInit {
 
   showStudentSearch() {
     this.studentSelected = false;
+    this.getStudents();
+  }
+
+  cancelStudentSearch() {
+    this.studentSelected = true;
+  }
+
+  showCancel() {
+    if (localStorage.getItem('currentStudent') === null) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
