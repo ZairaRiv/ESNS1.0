@@ -34,8 +34,12 @@ export class FindstudentComponent implements OnInit {
   }
 
   public getStudentName() {
-    const name = JSON.parse(localStorage.getItem('currentStudent'));
-    return name.firstName + ' ' + name.lastName;
+    if (localStorage.getItem('currentStudent') !== null)  {
+      const name = JSON.parse(localStorage.getItem('currentStudent'));
+      return name.firstName + ' ' + name.lastName;
+    } else {
+      return 'No student chosen';
+    }
   }
 
   getStudents() {
