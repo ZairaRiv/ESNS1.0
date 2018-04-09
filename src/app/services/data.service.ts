@@ -81,6 +81,10 @@ export class DataService {
     return this.httpc.get(this.dataUrl + '/services/getschools_api.php');
   }
 
+  getStudents(schoolID) {
+    return this.httpc.get(this.dataUrl + '/services/getstudents_api.php?schoolID=' + schoolID);
+  }
+
   get isLoggedIn() {
     if (localStorage.getItem('currentUser') === null) {
       return false;
