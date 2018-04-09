@@ -13,7 +13,13 @@
 
 
 <div class="second" style="background-color: DarkBlue ;" *ngIf="!studentSelected">
-	<div class="third" id="parent">
+	<div class="third" id="parent" *ngIf="studentsLoading">
+			<app-gears></app-gears>
+	</div>
+
+
+
+	<div class="third" id="parent" *ngIf="!studentsLoading">
 		<div class="child">
 			<form class="example-form">
 				<mat-form-field>
@@ -32,6 +38,5 @@
 			<br>
 			<a (click)="cancelStudentSearch()">cancel</a>
 		</div>
-
 	</div>
 </div>

@@ -43,9 +43,6 @@ export class DataService {
    getAdminMenu() {
     const menu: MenuItems[] = [
       {link: '/map', title: 'Active Map'},
-      {link: '/school', title: 'School'},
-      {link: '/findstudent', title: 'Find Student'},
-      {link: '/messaging', title: 'Messaging'},
       {link: '/admin', title: 'Admin'},
       {link: '/logout', title: 'Logout'}
     ];
@@ -91,7 +88,6 @@ export class DataService {
 
   getStudents() {
     const schoolID = this.getCurrentSchool().schoolID;
-    console.log('sid' + schoolID);
     return this.httpc.get(this.dataUrl + '/services/getstudents_api.php?schoolID=' + schoolID);
   }
 

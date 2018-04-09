@@ -55,7 +55,6 @@ export class SchoolComponent implements OnInit {
 
   showSchoolSearch() {
     this.schoolSelected = false;
-    this.currentSchool = {};
   }
 
   filterSchools(val: string): string[] {
@@ -80,5 +79,17 @@ export class SchoolComponent implements OnInit {
 
   displayFn(school): string {
     return school ? school.schoolName : school;
+  }
+
+  cancelSchoolSearch() {
+    this.schoolSelected = true;
+  }
+
+  showCancel() {
+    if (localStorage.getItem('currentSchool') === null) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

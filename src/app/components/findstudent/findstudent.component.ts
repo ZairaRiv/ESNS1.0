@@ -17,6 +17,7 @@ export class FindstudentComponent implements OnInit {
   myControl: FormControl = new FormControl();
   filteredOptions: Observable<string[]>;
   public studentSelected: boolean;
+  public studentsLoading = false;
 
   constructor(private dataService: DataService, private router: Router) { }
 
@@ -38,9 +39,11 @@ export class FindstudentComponent implements OnInit {
   }
 
   getStudents() {
+    this.studentsLoading = true;
     this.dataService.getStudents().subscribe(data => {
       if ((data as any)) {
         console.log(data);
+        this.studentsLoading = false;
         this.dataService.students = data;
         this.filteredOptions = this.myControl.valueChanges.pipe(
           startWith(''),
