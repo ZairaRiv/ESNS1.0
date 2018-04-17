@@ -1,0 +1,65 @@
+<app-header></app-header>
+
+
+<div *ngIf="getStep()=='list'">
+  <h1>Buildings</h1>
+
+  <mat-list>
+    <mat-list-item *ngFor="let structure of structures">
+      <mat-icon mat-list-icon (click)="editLatLong(structure.buildingID)">place</mat-icon>
+      <mat-icon mat-list-icon (click)="editDimensions(structure.buildingID)">border_style</mat-icon>
+      <h4 mat-line>{{ structure.buildingName }}</h4>
+    </mat-list-item>
+  </mat-list>
+</div>
+
+<div *ngIf="getStep()=='editlatlong'">
+  <h1>Edit Lat Long</h1>
+
+  <form class="example-form">
+    <input type=hidden name="buildingID" value=" {{ structure.buildingID }} ">
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Name" value="{{ structure.buildingName }}">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Latitude" value="{{ structure.lat }}">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Longitude" value="{{ structure.long }}">
+    </mat-form-field>
+  </form>
+</div>
+
+
+<div *ngIf="getStep()=='editdimensions'">
+  <h1>Edit Dimensions</h1>
+
+  {{ structure.buildingName }}
+  <br>
+  <br>
+
+  <form class="example-form">
+    <div *ngFor="let d of dimensions">
+      <b>Point {{ d.p }}</b> :
+      <input type="hidden" value="d.p">
+      <mat-form-field class="example-tuple-width">
+        <input matInput name="width" placeholder="Width" [(ngModel)]="d.w">
+      </mat-form-field>
+
+      <mat-form-field class="example-tuple-width">
+        <input matInput name="height" placeholder="Height" [(ngModel)]="d.h">
+      </mat-form-field>
+
+      <mat-checkbox name="start" [(ngModel)]="d.s">Start Point</mat-checkbox>
+
+      <mat-checkbox name="end" [(ngModel)]="d.e">End Point</mat-checkbox>
+    </div>
+  </form>
+
+</div>
+
+
+<app-footer></app-footer>

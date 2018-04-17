@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import { MockNgModuleResolver } from '@angular/compiler/testing';
 
 @Injectable()
 export class DataService {
@@ -15,6 +16,7 @@ export class DataService {
    private _data: any;
    private currentUser: any;
    public students: any;
+   private currentBuilding: string;
 
    public store (data: any) {
      this._data = data;
@@ -22,6 +24,20 @@ export class DataService {
 
    public restore (): any {
      return this._data;
+   }
+
+   setCurrentBuilding(_num) {
+      this.currentBuilding = _num;
+      localStorage.setItem('currentBuilding', _num);
+   }
+
+   getCurrentBuilding() {
+     if (this.currentBuilding == null) {
+      if (localStorage.getItem('currentBuilding') !== null)  {
+        this.currentBuilding = localStorage.getItem('currentBuilding');
+      }
+     }
+     return this.currentBuilding;
    }
 
    getPosts() {
@@ -70,7 +86,10 @@ export class DataService {
 
   sendEmail(subject, to, message, name) {
     return this.httpc.post(this.dataUrl + '/services/sendemail_api.php', {
-      subject, to, message, name
+      subject,
+      to,
+      message,
+      name
     });
   }
 
@@ -105,6 +124,26 @@ export class DataService {
     return this.httpc.get(this.dataUrl + '/services/getstudents_api.php?schoolID=' + schoolID);
   }
 
+  getBuildings() {
+    const schoolID = this.getCurrentSchool().schoolID;
+    return this.httpc.get(this.dataUrl + '/services/loadbuildings.php?schoolID=' + schoolID);
+  }
+
+  getStructures() {
+    const schoolID = this.getCurrentSchool().schoolID;
+    return this.httpc.get(this.dataUrl + '/services/loadbuildings.php?schoolID=' + schoolID);
+  }
+
+  getAllStructureDimensions() {
+    const schoolID = this.getCurrentSchool().schoolID;
+    return this.httpc.get(this.dataUrl + '/services/getallstructuredimensions.php?schoolID=' + schoolID);
+  }
+
+  getStructureDimensions(buildingID) {
+    const schoolID = this.getCurrentSchool().schoolID;
+    return this.httpc.get(this.dataUrl + '/services/getstructuredimensions.php?schoolID=' + schoolID + '&buildingID=' + buildingID);
+  }
+
   get isLoggedIn() {
     if (localStorage.getItem('currentUser') === null) {
       return false;
@@ -131,6 +170,8 @@ export class DataService {
     }
     return currentSchool;
   }
+
+
 }
 
 

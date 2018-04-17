@@ -48,6 +48,8 @@ import { FindstudentpublicComponent } from './components/findstudentpublic/finds
 import { LogoutComponent } from './components/logout/logout.component';
 import { InfoboxComponent } from './designcomponents/dashboard/infobox/infobox.component';
 import { GearsComponent } from './designcomponents/gears/gears.component';
+import { MaprenderComponent } from './designcomponents/maprender/maprender.component';
+import { MapeditorComponent } from './components/mapeditor/mapeditor.component';
 
 const appRoutes: Routes = [
   { path: '', component:MainComponent},
@@ -66,6 +68,7 @@ const appRoutes: Routes = [
   { path: 'findstudentpublic', component:FindstudentpublicComponent},
   { path: 'admin', component:AdminComponent, canActivate: [AuthGuard]},
   { path: 'map', component:MapComponent, canActivate: [AuthGuard]},
+  { path: 'mapeditor', component:MapeditorComponent, canActivate: [AuthGuard]},
   { path: 'school', component:SchoolComponent, canActivate: [AuthGuard]},
   { path: 'findstudent', component:FindstudentComponent, canActivate: [AuthGuard]},
   { path: 'messaging', component:MessagingComponent, canActivate: [AuthGuard]}
@@ -105,7 +108,9 @@ const appRoutes: Routes = [
     FindstudentpublicComponent,
     LogoutComponent,
     InfoboxComponent,
-    GearsComponent
+    GearsComponent,
+    MaprenderComponent,
+    MapeditorComponent,
   ],
   imports: [
     BrowserModule,

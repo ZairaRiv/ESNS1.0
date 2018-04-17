@@ -13,7 +13,7 @@ import { MatButtonModule,
     MatMenuModule,
     MatExpansionModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
 } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
