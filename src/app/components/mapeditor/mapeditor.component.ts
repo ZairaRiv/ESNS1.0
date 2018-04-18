@@ -6,14 +6,16 @@ import { DataService } from '../../services/data.service';
   templateUrl: './mapeditor.component.html',
   styleUrls: ['./mapeditor.component.css']
 })
-export class MapeditorComponent implements OnInit {
 
+export class MapeditorComponent implements OnInit {
   private step: string;
   public structures: any;
   public structure: any;
-  public dimensions: any;
+  public dimensions: DimensionInterface[] = [];
 
-  constructor(private dataService: DataService) { }
+  constructor(
+    private dataService: DataService,
+  ) {}
 
   ngOnInit() {
     this.step = 'list';
@@ -30,29 +32,113 @@ export class MapeditorComponent implements OnInit {
   }
 
   editLatLong(buildingID) {
-    console.log('editing');
-    this.setStep('editlatlong');
+    this.step = 'editlatlong';
     this.dataService.setCurrentBuilding(buildingID);
     this.parseOutBuilding(buildingID);
   }
 
   editDimensions(buildingID) {
-    console.log('editing');
-    this.setStep('editdimensions');
+    this.step = 'editdimensions';
     this.dataService.setCurrentBuilding(buildingID);
     this.dataService.getStructureDimensions(buildingID).subscribe(data => {
-        if (data as any) {
-          console.log(data);
-          this.dimensions = data;
-          for (const d of this.dimensions) {
-            d.e = this.isTrue(d.e);
-            d.s = this.isTrue(d.s);
-            d.w = d.w as number;
-            d.h = d.h as number;
-          }
+      if (data as any) {
+        let newData: DimensionInterface[];
+        newData = Array.from(data as any);
+        console.log(newData.length);
+
+        for (let i = 0; i < newData.length; i++) {
+          console.log(newData[i]);
+          newData[i].s = this.isTrue(newData[i].s);
+          newData[i].e = this.isTrue(newData[i].e);
+          this.pushDimensions(newData[i]);
         }
+      }
     });
     this.parseOutBuilding(buildingID);
+  }
+
+  pushDimensions(d) {
+    const oneDimension: DimensionInterface = {
+      p: Number(d.p),
+      w: Number(d.w),
+      h: Number(d.h),
+      s: Boolean(d.s),
+      e: Boolean(d.e)
+    };
+    this.dimensions.push(oneDimension);
+  }
+
+
+  moveDimensionDown(i) {
+    if (i === this.dimensions.length - 1) {
+      console.log('Already at the bottom');
+      return;
+    }
+
+  }
+
+  moveDimensionUp(i) {
+    if (i === 0) {
+      console.log('Already at the top');
+      return;
+    }
+
+
+  }
+
+  deleteDimension(p) {
+    if (this.dimensions.length === 1) {
+      console.log('Cannot delete the last point');
+      return;
+    }
+
+    console.log('Deleting point ' + p);
+    let newDimensions: DimensionInterface[] = [];
+
+    for (const d of this.dimensions) {
+      if (d.p !== p) {
+        d.p = newDimensions.length;
+        newDimensions.push(d);
+      }
+    }
+    this.dimensions = newDimensions;
+    console.log(this.dimensions);
+  }
+
+  addDimension() {
+    this.step = 'easdasd';
+    console.log('adding dimension');
+    const newDimension: DimensionInterface = {
+      p: this.dimensions.length,
+      w: 0,
+      h: 0,
+      s: false,
+      e: false
+    };
+    this.dimensions.push(newDimension);
+    console.log(this.dimensions);
+
+    this.step = 'editdimensions';
+  }
+
+  startCheckHit(i) {
+    this.dimensions[i].s = !this.dimensions[i].s;
+  }
+
+  endCheckHit(i) {
+    this.dimensions[i].e = !this.dimensions[i].e;
+  }
+
+  changeX(i,x) {
+    console.log('X CHANGE');
+    console.log(i);
+    console.log(x);
+    this.dimensions[i].w = x;
+    console.log(this.dimensions[i]);
+  }
+
+  changeY(i,y) {
+    this.dimensions[i].h = y;
   }
 
   parseOutBuilding(buildingID) {
@@ -66,7 +152,7 @@ export class MapeditorComponent implements OnInit {
 
   getStructures() {
     this.dataService.getStructures().subscribe(data => {
-      if ((data as any)) {
+      if (data as any) {
         console.log(data);
         this.structures = data;
       }
@@ -80,5 +166,19 @@ export class MapeditorComponent implements OnInit {
       return false;
     }
   }
+}
 
+interface DimensionInterface {
+  p: number;
+  w: number;
+  h: number;
+  s: boolean;
+  e: boolean;
+}
+
+interface LatLongInterface {
+  buildingID: string;
+  buildingName: string;
+  lat: string;
+  long: string;
 }
