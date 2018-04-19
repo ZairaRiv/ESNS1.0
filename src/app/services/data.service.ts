@@ -144,6 +144,12 @@ export class DataService {
     return this.httpc.get(this.dataUrl + '/services/getstructuredimensions.php?schoolID=' + schoolID + '&buildingID=' + buildingID);
   }
 
+  saveDimensions(obj) {
+    return this.httpc.post(this.dataUrl + '/services/savedimensions_api.php', {
+      obj
+    });
+  }
+
   get isLoggedIn() {
     if (localStorage.getItem('currentUser') === null) {
       return false;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -12,6 +12,7 @@ export class MapeditorComponent implements OnInit {
   public structures: any;
   public structure: any;
   public dimensions: DimensionInterface[] = [];
+  public errors: string[] = [];
 
   constructor(
     private dataService: DataService,
@@ -21,6 +22,56 @@ export class MapeditorComponent implements OnInit {
     this.step = 'list';
     this.dataService.getCurrentSchool();
     this.getStructures();
+  }
+
+  validateForm() {
+    // first we must validate the form
+    // there must be an equal amount of starts and ends
+    // there must be at least one start
+    // there must be no empty x,y coord fields
+    let startCount = 0;
+    let endCount = 0;
+    this.errors = [];
+
+    for (let i = 0; i < this.dimensions.length; i++) {
+      if (this.dimensions[i].s === true) {
+        startCount++;
+      }
+      if (this.dimensions[i].e === true) {
+        endCount++;
+      }
+      if (this.dimensions[i].w === '') {
+        this.errors.push('Missing x-coordinate at point ' + i);
+      }
+      if (this.dimensions[i].h === '') {
+        this.errors.push('Missing y-coordinate at point ' + i);
+      }
+    }
+
+    if (startCount === 0) {
+      this.errors.push('There are no start points.');
+    }
+    if (endCount === 0) {
+      this.errors.push('There are no end points');
+    }
+
+    if (startCount !== endCount) {
+      this.errors.push('There are an uneven number of start and end points');
+    }
+  }
+
+  saveDimensions() {
+    this.validateForm();
+
+    // if no errors
+    if (this.errors.length === 0) {
+      const obj = {
+        schoolID: this.dataService.getCurrentSchool().schoolID,
+        buildingID: this.dataService.getCurrentBuilding(),
+        dimensions: this.dimensions
+      };
+      console.log(obj);
+    }
   }
 
   getStep() {
@@ -44,30 +95,45 @@ export class MapeditorComponent implements OnInit {
       if (data as any) {
         let newData: DimensionInterface[];
         newData = Array.from(data as any);
-        console.log(newData.length);
 
         for (let i = 0; i < newData.length; i++) {
-          console.log(newData[i]);
           newData[i].s = this.isTrue(newData[i].s);
           newData[i].e = this.isTrue(newData[i].e);
           this.pushDimensions(newData[i]);
         }
+
+        this.deleteDimension(10);
       }
+
     });
+
     this.parseOutBuilding(buildingID);
   }
 
   pushDimensions(d) {
     const oneDimension: DimensionInterface = {
       p: Number(d.p),
-      w: Number(d.w),
-      h: Number(d.h),
+      w: String(d.w),
+      h: String(d.h),
       s: Boolean(d.s),
       e: Boolean(d.e)
     };
     this.dimensions.push(oneDimension);
   }
 
+  isNotLast(p) {
+    return p < this.dimensions.length - 1 ? true : false;
+  }
+
+  isNotFirst(p) {
+    return p === 0 ? false : true;
+  }
+
+  renumerate() {
+    for (let i = 0; i < this.dimensions.length; i++) {
+      this.dimensions[i].p = i;
+    }
+  }
 
   moveDimensionDown(i) {
     if (i === this.dimensions.length - 1) {
@@ -75,6 +141,10 @@ export class MapeditorComponent implements OnInit {
       return;
     }
 
+    const temp = this.dimensions[i];
+    this.dimensions[i] = this.dimensions[i + 1];
+    this.dimensions[i + 1] = temp;
+    this.renumerate();
   }
 
   moveDimensionUp(i) {
@@ -83,7 +153,10 @@ export class MapeditorComponent implements OnInit {
       return;
     }
 
-
+    const temp = this.dimensions[i - 1];
+    this.dimensions[i - 1] = this.dimensions[i];
+    this.dimensions[i] = temp;
+    this.renumerate();
   }
 
   deleteDimension(p) {
@@ -102,43 +175,29 @@ export class MapeditorComponent implements OnInit {
       }
     }
     this.dimensions = newDimensions;
-    console.log(this.dimensions);
   }
 
   addDimension() {
-    this.step = 'easdasd';
-    console.log('adding dimension');
     const newDimension: DimensionInterface = {
       p: this.dimensions.length,
-      w: 0,
-      h: 0,
+      w: '',
+      h: '',
       s: false,
       e: false
     };
-    this.dimensions.push(newDimension);
-    console.log(this.dimensions);
-
-    this.step = 'editdimensions';
+    this.pushDimensions(newDimension);
   }
 
-  startCheckHit(i) {
-    this.dimensions[i].s = !this.dimensions[i].s;
-  }
-
-  endCheckHit(i) {
-    this.dimensions[i].e = !this.dimensions[i].e;
-  }
-
-  changeX(i,x) {
-    console.log('X CHANGE');
-    console.log(i);
-    console.log(x);
-    this.dimensions[i].w = x;
-    console.log(this.dimensions[i]);
-  }
-
-  changeY(i,y) {
-    this.dimensions[i].h = y;
+  insertHere(p) {
+    const newDimension: DimensionInterface = {
+      p: 0,
+      w: '',
+      h: '',
+      s: false,
+      e: false
+    };
+    this.dimensions.splice(p, 0, newDimension);
+    this.renumerate();
   }
 
   parseOutBuilding(buildingID) {
@@ -159,6 +218,14 @@ export class MapeditorComponent implements OnInit {
     });
   }
 
+  startCheckHit(i) {
+    this.dimensions[i].s = !this.dimensions[i].s;
+  }
+
+  endCheckHit(i) {
+    this.dimensions[i].e = !this.dimensions[i].e;
+  }
+
   isTrue(val) {
     if (val === '1') {
       return true;
@@ -166,12 +233,16 @@ export class MapeditorComponent implements OnInit {
       return false;
     }
   }
+
+  debug() {
+    console.log(this.dimensions);
+  }
 }
 
 interface DimensionInterface {
   p: number;
-  w: number;
-  h: number;
+  w: string;
+  h: string;
   s: boolean;
   e: boolean;
 }

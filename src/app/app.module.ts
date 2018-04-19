@@ -51,6 +51,7 @@ import { InfoboxComponent } from './designcomponents/dashboard/infobox/infobox.c
 import { GearsComponent } from './designcomponents/gears/gears.component';
 import { MaprenderComponent } from './designcomponents/maprender/maprender.component';
 import { MapeditorComponent } from './components/mapeditor/mapeditor.component';
+import { AdminlinksComponent } from './designcomponents/adminlinks/adminlinks.component';
 
 const appRoutes: Routes = [
   { path: '', component:MainComponent},
@@ -112,6 +113,7 @@ const appRoutes: Routes = [
     GearsComponent,
     MaprenderComponent,
     MapeditorComponent,
+    AdminlinksComponent,
   ],
   imports: [
     BrowserModule,
