@@ -1,0 +1,83 @@
+<app-header></app-header>
+
+
+
+<div *ngIf="getStep()=='list'">
+  <h1>Buildings</h1>
+
+  <mat-list>
+    <mat-list-item *ngFor="let structure of structures">
+      <mat-icon mat-list-icon (click)="editLatLong(structure.buildingID)">place</mat-icon>
+      <mat-icon mat-list-icon (click)="editDimensions(structure.buildingID)">border_style</mat-icon>
+      <h4 mat-line>{{ structure.buildingName }}</h4>
+    </mat-list-item>
+  </mat-list>
+</div>
+
+<div *ngIf="getStep()=='editlatlong'">
+  <h1>Edit Lat Long</h1>
+
+  <form class="example-form">
+    <input type=hidden name="buildingID" value=" {{ structure.buildingID }} ">
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Name" value="{{ structure.buildingName }}">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Latitude" value="{{ structure.lat }}">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Longitude" value="{{ structure.long }}">
+    </mat-form-field>
+  </form>
+</div>
+
+
+<div *ngIf="getStep()=='editdimensions'">
+  <h3>Edit Dimensions</h3>
+
+  <h1>{{ structure.buildingName }}</h1>
+  <br>
+  <button mat-raised-button color="primary" (click)="debug()">Debug</button>
+  <br>
+  <br>
+  <div style="color: red; font-weight: 600" *ngFor="let e of errors">
+    {{ e }}
+  </div>
+  <div *ngIf="errors.length>0"><br><br><br></div>
+
+  <form #editorForm="ngForm" id="editorForm">
+    <div *ngFor="let d of dimensions; let i = index;" style="width: 900px">
+      <b>Point {{ d.p | number: '3.0' }}</b> :
+      <input type="hidden" value="d.p">
+      <mat-form-field class="example-tuple-width">
+        <input matInput name="width_{{i}}" placeholder="X Coord" [(ngModel)]="d.w" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+      </mat-form-field>
+
+      <mat-form-field class="example-tuple-width">
+        <input matInput name="height_{{i}}" placeholder="Y Coord" [(ngModel)]="d.h" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+      </mat-form-field>
+
+      <mat-checkbox name="start" [checked]="d.s" (change)="startCheckHit(d.p)">Start Point</mat-checkbox>
+      <mat-checkbox name="end" [checked]="d.e" (change)="endCheckHit(d.p)">End Point</mat-checkbox>
+      &nbsp; &nbsp; &nbsp;
+
+      <!--button mat-mini-fab color="primary" (click)="insertHere(i)" style="width: 40px" type="button"> + </button-->
+      <button mat-mini-fab color="primary" (click)="moveDimensionDown(i)" style="width: 40px" type="button" *ngIf="isNotLast(i)"> \/ </button>
+      <button mat-mini-fab disabled style="width: 40px" type="button" *ngIf="!isNotLast(i)">  </button>
+      <button mat-mini-fab color="primary" (click)="moveDimensionUp(i)" style="width: 40px" type="button"  *ngIf="isNotFirst(i)"> /\ </button>
+      <button mat-mini-fab disabled style="width: 40px" type="button"  *ngIf="!isNotFirst(i)">    </button>
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button mat-mini-fab color="warn" (click)="deleteDimension(d.p)" style="width: 40px" type="button"> X </button>
+    </div>
+  </form>
+
+  <button mat-raised-button color="primary" (click)="addDimension()">Add Point</button>
+  <button mat-raised-button color="primary" (click)="saveDimensions()">Save</button>
+
+</div>
+
+
+<app-footer></app-footer>
