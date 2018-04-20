@@ -62,7 +62,9 @@ export class MapeditorComponent implements OnInit {
 
   saveDimensions() {
     this.validateForm();
+    console.log('Saving object');
 
+    console.log(this.errors);
     // if no errors
     if (this.errors.length === 0) {
       const obj = {
@@ -71,6 +73,7 @@ export class MapeditorComponent implements OnInit {
         dimensions: this.dimensions
       };
       console.log(obj);
+      this.dataService.saveDimensions(obj);
     }
   }
 
@@ -101,10 +104,7 @@ export class MapeditorComponent implements OnInit {
           newData[i].e = this.isTrue(newData[i].e);
           this.pushDimensions(newData[i]);
         }
-
-        this.deleteDimension(10);
       }
-
     });
 
     this.parseOutBuilding(buildingID);
@@ -166,7 +166,7 @@ export class MapeditorComponent implements OnInit {
     }
 
     console.log('Deleting point ' + p);
-    let newDimensions: DimensionInterface[] = [];
+    const newDimensions: DimensionInterface[] = [];
 
     for (const d of this.dimensions) {
       if (d.p !== p) {

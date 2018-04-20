@@ -16,6 +16,7 @@ export class GeolocateComponent implements OnInit {
         this.location = position.coords;
         console.log(position.coords);
         console.log(position.coords.latitude + ',' + position.coords.longitude);
+        localStorage.setItem('location', JSON.stringify(this.location));
         this.router.navigate(['/reportType']);
       },
     error => {
@@ -23,6 +24,8 @@ export class GeolocateComponent implements OnInit {
   {
     enableHighAccuracy: false,
   });
-    }
   }
+    }
+
+
 }

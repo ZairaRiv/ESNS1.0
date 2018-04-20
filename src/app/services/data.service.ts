@@ -93,26 +93,20 @@ export class DataService {
     });
   }
 
+  getSchoolsByLatLong() {
+    const coords = JSON.parse(localStorage.getItem('location'));
+
+    const url = '/services/getschoolbylatlong_api.php?lat=' + coords.latitude + '&long=' + coords.longitude + '&dist=25';
+
+    return this.httpc.get(this.dataUrl + url);
+  }
+
   getUserCount() {
     return this.httpc.get(this.dataUrl + '/services/getstudentcount_api.php');
   }
 
   getSchoolCount() {
     return this.httpc.get(this.dataUrl + '/services/getschoolcount_api.php');
-  }
-
-  sendText(phNum, message) {
-    const obj = [ {
-      'phoneNumber': phNum,
-      'message': message
-    }];
-
-    // Authorization: Basic Y2JmODNiZTMxYjRmOjQ4MTBlMGI0YTJiZTFlNGE=
-    let headers = new HttpHeaders();
-    const usernamepassword = 'cbf83be31b4f:4810e0b4a2be1e4a';
-    // btoa turns the usernamepassword into Y2JmO....
-    headers = headers.append('Authorization', 'Basic ' + btoa(usernamepassword));
-    return this.httpc.post('https://api.callfire.com/v2/texts?', obj, {headers: headers});
   }
 
   getSchools() {
@@ -145,9 +139,32 @@ export class DataService {
   }
 
   saveDimensions(obj) {
-    return this.httpc.post(this.dataUrl + '/services/savedimensions_api.php', {
-      obj
-    });
+    console.log('hey');
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+
+    const passObj = {
+      'building': obj
+    };
+
+    console.log('passed');
+    console.log(passObj);
+    return this.httpc.post(this.dataUrl + '/services/savedimensions_api.php',
+      passObj , {headers: headers});
+  }
+
+  sendText(phNum, message) {
+    const obj = [ {
+      'phoneNumber': phNum,
+      'message': message
+    }];
+
+    // Authorization: Basic Y2JmODNiZTMxYjRmOjQ4MTBlMGI0YTJiZTFlNGE=
+    let headers = new HttpHeaders();
+    const usernamepassword = 'cbf83be31b4f:4810e0b4a2be1e4a';
+    // btoa turns the usernamepassword into Y2JmO....
+    headers = headers.append('Authorization', 'Basic ' + btoa(usernamepassword));
+    return this.httpc.post('https://api.callfire.com/v2/texts?', obj, {headers: headers});
   }
 
   get isLoggedIn() {
