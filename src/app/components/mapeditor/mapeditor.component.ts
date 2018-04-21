@@ -73,7 +73,9 @@ export class MapeditorComponent implements OnInit {
         dimensions: this.dimensions
       };
       console.log(obj);
-      this.dataService.saveDimensions(obj);
+      this.dataService.saveDimensions(obj).subscribe(data => {
+        console.log(data);
+      })
     }
   }
 
