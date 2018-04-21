@@ -24,7 +24,7 @@ export class MapeditorComponent implements OnInit {
     this.getStructures();
   }
 
-  validateForm() {
+  validateDimensionForm() {
     // first we must validate the form
     // there must be an equal amount of starts and ends
     // there must be at least one start
@@ -61,8 +61,7 @@ export class MapeditorComponent implements OnInit {
   }
 
   saveDimensions() {
-    this.validateForm();
-    console.log('Saving object');
+    this.validateDimensionForm();
 
     console.log(this.errors);
     // if no errors
@@ -75,7 +74,42 @@ export class MapeditorComponent implements OnInit {
       console.log(obj);
       this.dataService.saveDimensions(obj).subscribe(data => {
         console.log(data);
-      })
+      });
+    }
+  }
+
+  validateLatLongForm() {
+    this.errors = [];
+
+    if (!/^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}/.test(this.structure.lat)) {
+      this.errors.push('Latitude (' + this.structure.lat + ') is not a valid value');
+    }
+    if (!/^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$/.test(this.structure.long)) {
+      this.errors.push('Longitude is not a valid value');
+    }
+
+    const nameRegEx = new RegExp('.+');
+    if (!nameRegEx.test(this.structure.buildingName)) {
+      this.errors.push('Name field is blank');
+    }
+  }
+
+  saveDetails() {
+    this.validateLatLongForm();
+    console.log(this.errors);
+    // if no errors
+    if (this.errors.length === 0) {
+      const obj = {
+        schoolID: this.dataService.getCurrentSchool().schoolID,
+        buildingID: this.structure.buildingID,
+        name: this.structure.buildingName,
+        lat: this.structure.lat,
+        long: this.structure.long
+      };
+      console.log(obj);
+      this.dataService.saveDetails(obj).subscribe(data => {
+        console.log(data);
+      });
     }
   }
 
@@ -84,6 +118,7 @@ export class MapeditorComponent implements OnInit {
   }
 
   setStep(_step) {
+    this.errors = [];
     this.step = _step;
   }
 
@@ -96,6 +131,7 @@ export class MapeditorComponent implements OnInit {
   editDimensions(buildingID) {
     this.step = 'editdimensions';
     this.dataService.setCurrentBuilding(buildingID);
+    this.dimensions = [];
     this.dataService.getStructureDimensions(buildingID).subscribe(data => {
       if (data as any) {
         let newData: DimensionInterface[];

@@ -16,21 +16,30 @@
 
 <div *ngIf="getStep()=='editlatlong'">
   <h1>Edit Lat Long</h1>
-
+  <br>
+  <button mat-raised-button color="primary" (click)="debug()">Debug</button>
+  <button mat-raised-button color="primary" (click)="setStep('list')">Back to List</button>
+  <br>
+  <br>
+  <div style="color: red; font-weight: 600" *ngFor="let e of errors">
+    {{ e }}
+  </div>
   <form class="example-form">
-    <input type=hidden name="buildingID" value=" {{ structure.buildingID }} ">
+    <input type=hidden name="buildingID" value="{{structure.buildingID}}">
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Name" value="{{ structure.buildingName }}">
+      <input matInput name="name" placeholder="Name" [(ngModel)]="structure.buildingName">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Latitude" value="{{ structure.lat }}">
+      <input matInput name="lat" placeholder="Latitude" [(ngModel)]="structure.lat">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Longitude" value="{{ structure.long }}">
+      <input matInput name="long" placeholder="Longitude" [(ngModel)]="structure.long">
     </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="saveDetails()">Save</button>
   </form>
 </div>
 
@@ -41,6 +50,7 @@
   <h1>{{ structure.buildingName }}</h1>
   <br>
   <button mat-raised-button color="primary" (click)="debug()">Debug</button>
+  <button mat-raised-button color="primary" (click)="setStep('list')">Back to List</button>
   <br>
   <br>
   <div style="color: red; font-weight: 600" *ngFor="let e of errors">

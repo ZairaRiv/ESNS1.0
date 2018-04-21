@@ -139,7 +139,6 @@ export class DataService {
   }
 
   saveDimensions(obj) {
-    console.log('hey');
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
@@ -147,11 +146,22 @@ export class DataService {
       'building': obj
     };
 
-    console.log('passed');
-    console.log(passObj);
     return this.httpc.post(this.dataUrl + '/services/savedimensions_api.php',
       passObj , {headers: headers});
   }
+
+  saveDetails(obj) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+
+    const passObj = {
+      'building': obj
+    };
+
+    return this.httpc.post(this.dataUrl + '/services/savedetails_api.php',
+      passObj , {headers: headers});
+  }
+
 
   sendText(phNum, message) {
     const obj = [ {
@@ -193,8 +203,6 @@ export class DataService {
     }
     return currentSchool;
   }
-
-
 }
 
 
