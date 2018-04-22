@@ -4,15 +4,29 @@
 
 <div *ngIf="getStep()=='list'" style="padding-left: 20px">
   <h1>Buildings</h1>
+  <button mat-raised-button color="primary" (click)="setStep('createStructure')">Create Structure</button>
+  <br>
+  <br>
+    <div *ngFor="let structure of structures">
+      <div style="vertical-align: middle; font-size: 18px; line-height: 70px;">
+          <a (click)="editLatLong(structure.buildingID)">
+              <img src="https://www.esns.life/images/placeholder.svg" width="30px">
+            </a>
+            <a (click)="editNamePlacement(structure.buildingID)">
+                <img src="https://www.esns.life/images/signature.svg" width="30px">
+            </a>
+            <a (click)="editDimensions(structure.buildingID)">
+                <img src="https://www.esns.life/images/home.svg" width="30px">
+            </a>
+            &nbsp; &nbsp;
+            {{ structure.buildingName }}
+      </div>
 
-  <mat-list>
-    <mat-list-item *ngFor="let structure of structures">
-      <mat-icon mat-list-icon (click)="editLatLong(structure.buildingID)">place</mat-icon>
-      <mat-icon mat-list-icon (click)="editDimensions(structure.buildingID)">border_style</mat-icon>
-      <h4 mat-line>{{ structure.buildingName }}</h4>
-    </mat-list-item>
-  </mat-list>
+    </div>
 </div>
+
+
+
 
 <div *ngIf="getStep()=='editlatlong'" style="padding-left: 20px">
   <h1>Edit Lat Long</h1>
