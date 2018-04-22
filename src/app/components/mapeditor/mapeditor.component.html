@@ -2,7 +2,7 @@
 
 
 
-<div *ngIf="getStep()=='list'">
+<div *ngIf="getStep()=='list'" style="padding-left: 20px">
   <h1>Buildings</h1>
 
   <mat-list>
@@ -14,7 +14,7 @@
   </mat-list>
 </div>
 
-<div *ngIf="getStep()=='editlatlong'">
+<div *ngIf="getStep()=='editlatlong'" style="padding-left: 20px">
   <h1>Edit Lat Long</h1>
   <br>
   <button mat-raised-button color="primary" (click)="debug()">Debug</button>

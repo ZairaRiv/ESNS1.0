@@ -84,8 +84,9 @@ export class MapeditorComponent implements OnInit {
     if (!/^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}/.test(this.structure.lat)) {
       this.errors.push('Latitude (' + this.structure.lat + ') is not a valid value');
     }
-    if (!/^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$/.test(this.structure.long)) {
-      this.errors.push('Longitude is not a valid value');
+
+    if (!/^[+-]?((180\.?0*$)|(((1[0-7][0-9])|([0-9]{0,2}))\.?[0-9]*$))/.test(this.structure.long)) {
+      this.errors.push('Longitude (' + this.structure.long + ') is not a valid value');
     }
 
     const nameRegEx = new RegExp('.+');
@@ -96,9 +97,11 @@ export class MapeditorComponent implements OnInit {
 
   saveDetails() {
     this.validateLatLongForm();
-    console.log(this.errors);
     // if no errors
     if (this.errors.length === 0) {
+      // there is a bug in Angular 5 that sometimes causes a submit button to fire
+      // twice, once without parameters and once with
+
       const obj = {
         schoolID: this.dataService.getCurrentSchool().schoolID,
         buildingID: this.structure.buildingID,
