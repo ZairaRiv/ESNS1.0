@@ -120,12 +120,12 @@ export class DataService {
 
   getBuildings() {
     const schoolID = this.getCurrentSchool().schoolID;
-    return this.httpc.get(this.dataUrl + '/services/loadbuildings.php?schoolID=' + schoolID);
+    return this.httpc.get(this.dataUrl + '/services/loadbuildings_api.php?schoolID=' + schoolID);
   }
 
   getStructures() {
     const schoolID = this.getCurrentSchool().schoolID;
-    return this.httpc.get(this.dataUrl + '/services/loadbuildings.php?schoolID=' + schoolID);
+    return this.httpc.get(this.dataUrl + '/services/loadbuildings_api.php?schoolID=' + schoolID);
   }
 
   getAllStructureDimensions() {
