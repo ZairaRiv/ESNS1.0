@@ -1,5 +1,23 @@
 <app-header></app-header>
 
-Find the status of a student here (public version)
+<div>
+    <form class = "example-form center">
+      <mat-card>
+          <mat-form-field class = "example-full-width">
+              <input matInput [(ngModel)] = "Submit" placeholder = "Name of Student">
+          </mat-form-field>
+
+          <br>
+          <mat-form-field class = "example-full-width">
+              <input matInput [(ngModel)] = "Submit" placeholder = "Your Key">
+          </mat-form-field>
+      
+          <br> 
+          <button mat-raised-button (click) = "showSubmit()">Submit</button>
+          <mat-spinner [style.display] ="showSpinner ? 'block' : 'none'"></mat-spinner>
+      
+      </mat-card>
+  </form>	
+  </div>>
 
 <app-footer></app-footer>
