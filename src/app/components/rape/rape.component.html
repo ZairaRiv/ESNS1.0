@@ -14,19 +14,56 @@
 	<div *ngIf="getStep()==3">
 		<app-bigbox title="Gather Information Before Calling 911" color="#7380C9"></app-bigbox>
 		<div>
-			<ul>
-				<!-- hoping this is a form that can be integrated rather than output-->
-				<li>description of suspect</li>
-				<li>relation if any</li>
-				<li>Time/Date</li>
-				<li>sex acts</li>
-				<li>Clothing worn at the time</li>
-				<li>injuries</li>
+		  <form class = "example-form center">
+			<mat-card>
+				<mat-form-field class = "example-full-width">
+					<input matInput [(ngModel)] = "Submit" placeholder = "Description of Suspect">
+				</mat-form-field>
+	
+				<br>
+				<mat-form-field class = "example-full-width">
+					<input matInput [(ngModel)] = "Submit" placeholder = "Relation if Any">
+				</mat-form-field>
+			
+				<br>
+				<mat-form-field class = "example-full-width">
+						<input matInput [(ngModel)] = "Submit" placeholder = "Time/Date">
+						<!-- Need to add an option if it less than 48 hours-->
+						<!--If less than 48 hours output nearest hospital location-->
+				</mat-form-field>
+
+				<br>
+				<mat-form-field class = "example-full-width">
+						<input matInput [(ngModel)] = "Submit" placeholder = "Sex Acts">
+				</mat-form-field>
+
+				<br>
+				<mat-form-field class = "example-full-width">
+						<input matInput [(ngModel)] = "Submit" placeholder = "Clothing worn at the time">
+				</mat-form-field>
+
+				<br>
+				<mat-form-field class = "example-full-width">
+						<input matInput [(ngModel)] = "Submit" placeholder = "injuries">
+				</mat-form-field>
+
 				<!-- will also need an external link from this page-->
-				<li>Additional Resources page</li>
-				<!-- will also need an external link from this page-->
-				<li>time <48 hours will need to add hospital locations</li>
-			</ul>
+				<br>
+				<mat-form-field class = "example-full-width">
+						<input matInput [(ngModel)] = "Submit" placeholder = "Additional Resources Link">
+				</mat-form-field>
+
+
+				<br> 
+				<button mat-raised-button (click) = "showSubmit()">Submit</button>
+				<mat-spinner [style.display] ="showSpinner ? 'block' : 'none'"></mat-spinner>
+			
+			</mat-card>
+		
+			<mat-card *ngIf = "answerDisplay">
+				<h1>{{ submitDisplay}}, you're damn right.</h1>
+			</mat-card>
+		</form>	
 		</div>>
 	</div>
 	

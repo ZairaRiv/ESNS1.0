@@ -14,13 +14,38 @@
 <div *ngIf="getStep()==3">
 	<app-bigbox title="Gather Information Before Calling 911" color="#7380C9"></app-bigbox>
 	<div>
-		<ul>
-			<li>Name of the person if known</li>
-			<li>Description of person</li>
-			<li>Relation to you if any</li>
-			<!-- need to add a slider maybe embedded or in the app comp-->
-			<li>Danger will need slider for this</li>
-		</ul>
-	</div>>
+		<form class = "example-form center">
+		  <mat-card>
+			  <mat-form-field class = "example-full-width">
+				  <input matInput [(ngModel)] = "Submit" placeholder = "Name of the person if known">
+			  </mat-form-field>
+  
+			  <br>
+			  <mat-form-field class = "example-full-width">
+				  <input matInput [(ngModel)] = "Submit" placeholder = "Description of person">
+			  </mat-form-field>
+		  
+			  <br>
+			  <mat-form-field class = "example-full-width">
+					  <input matInput [(ngModel)] = "Submit" placeholder = "Relation to you if any">
+			  </mat-form-field>
+
+			  <!-- Need a slide for this portion, and store info on that slider-->
+			  <br>
+			  <mat-form-field class = "example-full-width">
+					  <input matInput [(ngModel)] = "Submit" placeholder = "Danger">
+			  </mat-form-field>
+
+			  <br> 
+			  <button mat-raised-button (click) = "showSubmit()">Submit</button>
+			  <mat-spinner [style.display] ="showSpinner ? 'block' : 'none'"></mat-spinner>
+		  
+		  </mat-card>
+	  
+		  <mat-card *ngIf = "answerDisplay">
+			  <h1>{{ submitDisplay}}, you're damn right.</h1>
+		  </mat-card>
+	  </form>	
+	  </div>>
 </div>
 

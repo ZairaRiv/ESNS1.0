@@ -38,7 +38,7 @@ import { FloodComponent } from './components/flood/flood.component';
 import { BigboxComponent } from './designcomponents/bigbox/bigbox.component';
 import { OptionsbuttonsComponent } from './designcomponents/optionsbuttons/optionsbuttons.component';
 import { LoginComponent } from './components/login/login.component';
-import { AuthGuard } from "./auth.guard";
+import { AuthGuard } from './auth.guard';
 import { AdminComponent } from './components/admin/admin.component';
 import { FindstudentComponent } from './components/findstudent/findstudent.component';
 import { MapComponent } from './components/map/map.component';
@@ -54,26 +54,26 @@ import { MapeditorComponent } from './components/mapeditor/mapeditor.component';
 import { AdminlinksComponent } from './designcomponents/adminlinks/adminlinks.component';
 
 const appRoutes: Routes = [
-  { path: '', component:MainComponent},
-  { path: 'about', component:AboutComponent},
-  { path: 'report', component:ReportComponent},
-  { path: 'contact', component:ContactComponent},
-  { path: 'reportType', component:ReportTypeComponent},
-  { path: 'shooting', component:ShootingComponent},
-  { path: 'rape', component:RapeComponent},
-  { path: 'stalking', component:StalkingComponent},
-  { path: 'gta', component:GtaComponent},
-  { path: 'injury', component:InjuryComponent},
-  { path: 'flood', component:FloodComponent},
-  { path: 'login', component:LoginComponent},
-  { path: 'logout', component:LogoutComponent},
-  { path: 'findstudentpublic', component:FindstudentpublicComponent},
-  { path: 'admin', component:AdminComponent, canActivate: [AuthGuard]},
-  { path: 'map', component:MapComponent, canActivate: [AuthGuard]},
-  { path: 'mapeditor', component:MapeditorComponent, canActivate: [AuthGuard]},
-  { path: 'school', component:SchoolComponent, canActivate: [AuthGuard]},
-  { path: 'findstudent', component:FindstudentComponent, canActivate: [AuthGuard]},
-  { path: 'messaging', component:MessagingComponent, canActivate: [AuthGuard]}
+  { path: '', component: MainComponent},
+  { path: 'about', component: AboutComponent},
+  { path: 'report', component: ReportComponent},
+  { path: 'contact', component: ContactComponent},
+  { path: 'reportType', component: ReportTypeComponent},
+  { path: 'shooting', component: ShootingComponent},
+  { path: 'rape', component: RapeComponent},
+  { path: 'stalking', component: StalkingComponent},
+  { path: 'gta', component: GtaComponent},
+  { path: 'injury', component: InjuryComponent},
+  { path: 'flood', component: FloodComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'logout', component: LogoutComponent},
+  { path: 'findstudentpublic', component: FindstudentpublicComponent},
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+  { path: 'map', component: MapComponent, canActivate: [AuthGuard]},
+  { path: 'mapeditor', component: MapeditorComponent, canActivate: [AuthGuard]},
+  { path: 'school', component: SchoolComponent, canActivate: [AuthGuard]},
+  { path: 'findstudent', component: FindstudentComponent, canActivate: [AuthGuard]},
+  { path: 'messaging', component: MessagingComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

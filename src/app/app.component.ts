@@ -7,9 +7,17 @@ import { Component, ViewEncapsulation  } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  title = 'app';
+//  title = 'app';
 
-  constructor() {  }
+//  constructor() {  }
+
+   submit = '';
+   sumbitDisplay = '';
+   showSpinner = false;
 
 
+   showSubmit() {
+       this.showSpinner = true;
+
+   }
 }
