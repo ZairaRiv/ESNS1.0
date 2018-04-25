@@ -26,6 +26,25 @@
 </div>
 
 
+<div style="padding-left:20px" *ngIf="getStep()=='createStructure'">
+    <h1>Create Structure</h1>
+    <br>
+    <button mat-raised-button color="primary" (click)="debug()">Debug</button>
+    <button mat-raised-button color="primary" (click)="setStep('list')">Back to List</button>
+    <br>
+    <br>
+    <div style="color: red; font-weight: 600" *ngFor="let e of errors">
+        {{ e }}
+      </div>
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input matInput name="name" placeholder="Name" [(ngModel)]="createBuildingName">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="saveNewStructure()">Save</button>
+      </form>
+</div>
+
 
 
 <div *ngIf="getStep()=='editlatlong'" style="padding-left: 20px">

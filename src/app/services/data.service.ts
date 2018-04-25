@@ -9,7 +9,6 @@ export class DataService {
 
   constructor(public http: Http, private httpc: HttpClient) {
     console.log('Data Service Connected.');
-    console.log('Data Service intializing test data.');
    }
 
    private dataUrl = 'https://fast.esns.life';
@@ -136,6 +135,20 @@ export class DataService {
   getStructureDimensions(buildingID) {
     const schoolID = this.getCurrentSchool().schoolID;
     return this.httpc.get(this.dataUrl + '/services/getstructuredimensions.php?schoolID=' + schoolID + '&buildingID=' + buildingID);
+  }
+
+  saveNewStructure(obj) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+
+    const passObj = {
+      'building': obj
+    };
+
+    console.log(passObj);
+
+    return this.httpc.post(this.dataUrl + '/services/savenewstructure_api.php',
+      passObj , {headers: headers});
   }
 
   saveDimensions(obj) {
