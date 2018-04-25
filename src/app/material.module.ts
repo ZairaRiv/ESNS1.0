@@ -14,6 +14,7 @@ import { MatButtonModule,
     MatExpansionModule,
     MatCardModule,
     MatGridListModule,
+    MatProgressSpinnerModule,
 } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -37,6 +38,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         MatAutocompleteModule,
         FormsModule,
         ReactiveFormsModule,
+        MatProgressSpinnerModule,
     ],
     exports: [
         BrowserModule,
@@ -56,6 +58,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         MatAutocompleteModule,
         FormsModule,
         ReactiveFormsModule,
+        MatProgressSpinnerModule,
     ],
 })
 

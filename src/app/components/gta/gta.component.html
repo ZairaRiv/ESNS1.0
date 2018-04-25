@@ -1,8 +1,10 @@
 
 <div *ngIf="getStep()==1">
 	<app-bigbox title="Are You Injured?" color="#7380C9"></app-bigbox>
+	<div class ="center">
 	<app-optionsbuttons title="Yes" (click)="gotoStep(2)"></app-optionsbuttons>
 	<app-optionsbuttons title="No" (click)="gotoStep(3)"></app-optionsbuttons>
+    </div>
 </div>
 
 <div *ngIf="getStep()==2">
@@ -12,13 +14,31 @@
 <div *ngIf="getStep()==3">
 	<app-bigbox title="Gather Information Before Calling 911" color="#7380C9"></app-bigbox>
 	<div>
-		<ul>
-			<li>License Plate #</li>
-			<li>Drivers License #</li>
-			<li>Location #</li>
-			<li>VIN (Vehicle Identification Number)</li>
-			<li>Last time car was seen</li>
-		</ul>
+	  <form class = "example-form center">
+		<mat-card>
+			<mat-form-field class = "example-full-width">
+				<input matInput [(ngModel)] = "Submit" placeholder = "Licence Plate">
+			</mat-form-field>
+
+			<br>
+			<mat-form-field class = "example-full-width">
+				<input matInput [(ngModel)] = "Submit" placeholder = "VIN">
+			</mat-form-field>
+		
+			<br>
+			<mat-form-field class = "example-full-width">
+					<input matInput [(ngModel)] = "Submit" placeholder = "Licence #">
+			</mat-form-field>
+
+			<br> 
+			<button mat-raised-button (click) = "showSubmit()">Submit</button>
+			<mat-spinner [style.display] ="showSpinner ? 'block' : 'none'"></mat-spinner>
+		
+		</mat-card>
+	
+		<mat-card *ngIf = "answerDisplay">
+			<h1>{{ submitDisplay}}, you're damn right.</h1>
+		</mat-card>
+	</form>	
 	</div>>
 </div>
-
