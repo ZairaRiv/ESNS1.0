@@ -14,6 +14,8 @@ export class MapeditorComponent implements OnInit {
   public dimensions: DimensionInterface[] = [];
   public errors: string[] = [];
   public createBuildingName = '';
+  public createBuildingLat = '';
+  public createBuildingLong = '';
 
   constructor(
     private dataService: DataService,
@@ -35,6 +37,12 @@ export class MapeditorComponent implements OnInit {
         this.structures = data;
       }
     });
+  }
+
+  clearNewStructureVars() {
+    this.createBuildingLat = '';
+    this.createBuildingLong = '';
+    this.createBuildingName = '';
   }
 
   validateDimensionForm() {
@@ -80,9 +88,10 @@ export class MapeditorComponent implements OnInit {
     } else {
       const obj = {
         buildingName: this.createBuildingName,
-        schoolID: this.dataService.getCurrentSchool().schoolID
+        schoolID: this.dataService.getCurrentSchool().schoolID,
+        lat: this.createBuildingLat,
+        long: this.createBuildingLong
       };
-      console.log('here');
       this.dataService.saveNewStructure(obj).subscribe(function () {
           console.log('Inserted');
       });
