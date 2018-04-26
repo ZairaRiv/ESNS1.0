@@ -1,17 +1,17 @@
 <app-header></app-header>
 
 <div>
-    <form class = "example-form center">
+    <form class = "example-form center" name = "contactform">
       <mat-card>
           <mat-form-field class = "example-full-width">
-              <input matInput [(ngModel)] = "Submit" placeholder = "Name">
+              <input matInput [(ngModel)] = "Submit" placeholder = "Name" name="Name">
           </mat-form-field>
 
           <br>
           <mat-form-field class = "example-full-width">
-              <input matInput [(ngModel)] = "Submit" placeholder = "Subject">
+              <input matInput [(ngModel)] = "Submit" placeholder = "Subject" name="Subject">
           </mat-form-field>
-      
+
           <!-- Adding an option to scroll through options-->
           <br>
           <mat-form-field>
@@ -26,12 +26,12 @@
             <textarea matInput placeholder="Please write down your issue."></textarea>
           </mat-form-field>
 
-          <br> 
+          <br>
           <button mat-raised-button (click) = "showSubmit()">Submit</button>
           <mat-spinner [style.display] ="showSpinner ? 'block' : 'none'"></mat-spinner>
-      
+
       </mat-card>
-    </form>	
-  </div>>
+    </form>
+  </div>
 
 <app-footer></app-footer>
