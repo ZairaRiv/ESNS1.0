@@ -6,24 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-
+  issues = [
+    {value: 'admin-issue', viewValue: 'Administrator Issue'},
+    {value: 'comment-issue', viewValue: 'Comments'},
+    {value: 'suggestion-issue', viewValue: 'Suggestion'}
+  ];
   constructor() { }
-
   ngOnInit() {
   }
+
 }
 
-/****
-Not sure if I have to import the following
-impot{FormsModule} from 'angular/forms';
-
-@NgModule({
-  imports: [
-    ...,
-    FormsModule
-  ],
-  declarations: [...],
-  bootstrap: [...]
-})
-export class AppModule {}
-*/

@@ -9,7 +9,7 @@
 	<app-bigbox title="Are you safe?" color="red"></app-bigbox>
   <!-- will need an additional step figure out how-->
   <app-optionsbuttons title = "Yes" (click)= "gotoStep(4)"></app-optionsbuttons>
-  <app-optionsbuttons title = "No" (click) = "gotoStep(5)"></app-optionsbuttons>
+  <app-optionsbuttons title = "No" (click) = "zairasRedirect('https://fast.esns.life/report.php?lat=36.823967599999996&long=-119.70204929999998&dist=25')"></app-optionsbuttons>
 	<!-- need yes and no option, look at drive-->
 </div>
 
@@ -23,16 +23,6 @@
 </div>
 
 <div *ngIf="getStep()==4">
-	<div>
-		<ul>
-      <li>Not sure but in these steps I think we need to link to old</li>
-		</ul>
-	</div>>
-</div>
-
-<!-- will need to be based on time to know hours of buildings open-->
-<div *ngIf="getStep()==5">
-	<app-geolocate></app-geolocate>
 	<div>
 		<ul>
       <li>Not sure but in these steps I think we need to link to old</li>

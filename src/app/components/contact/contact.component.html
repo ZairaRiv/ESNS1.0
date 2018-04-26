@@ -1,52 +1,37 @@
 <app-header></app-header>
 
-<div class="row custom-row">
-        <div class= "col-sm-5 custom-container jumbotron" align = "center">
+<div>
+    <form class = "example-form center">
+      <mat-card>
+          <mat-form-field class = "example-full-width">
+              <input matInput [(ngModel)] = "Submit" placeholder = "Name">
+          </mat-form-field>
 
-          <form class="form-horizontal">
-              <fieldset>
-                <legend>Contact Us</legend>
+          <br>
+          <mat-form-field class = "example-full-width">
+              <input matInput [(ngModel)] = "Submit" placeholder = "Subject">
+          </mat-form-field>
+      
+          <!-- Adding an option to scroll through options-->
+          <br>
+          <mat-form-field>
+            <mat-select placeholder="Type of Issue" [(ngModel)]="selectedValue" name = "issue">
+              <mat-option *ngFor="let issue listings" [value]="issue.value">
+                {{ issue.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
-                  <!--- Email Block -->
-                  <div class="form-group">
-                    <label for="inputEmail">Name</label>
-                    <input type="text"
-                      id="inputEmail"
-                      placeholder="Email">
-                  </div>
-                  <!--- Password Block -->
-                  <div class="form-group">
-                    <label for="inputSchool">School Name</label>
-                    <input type="text">
-                  </div>
+          <mat-form-field>
+            <textarea matInput placeholder="Please write down your issue."></textarea>
+          </mat-form-field>
 
+          <br> 
+          <button mat-raised-button (click) = "showSubmit()">Submit</button>
+          <mat-spinner [style.display] ="showSpinner ? 'block' : 'none'"></mat-spinner>
+      
+      </mat-card>
+    </form>	
+  </div>>
 
-                  <!-- Email Block-->
-                  <div class="form-group">
-                    <label for="inputEmail" >E-mail</label>
-                    <input type="email">
-                  </div>
-
-
-                  <!-- Contact Box Block-->
-                  <div class = "form-group">
-                      <label for = "comment"></label>
-                      <textarea id="comment" cols = "30" rows ="10"></textarea>
-                  </div>
-
-
-                 <!--- Buttons Block -->
-                  <div class="form-group">
-                      <button type="reset" class="btn btn-default">Cancel</button>
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
-              </fieldset>
-          </form>
-        </div>
-      </div>
-
-<<<<<<< HEAD
-    <!-- Need to use data.service.ts to grab info from backend to frontned thats the flow -->
-=======
-      <app-footer></app-footer>
->>>>>>> a48a5595576c31cbd5d63a0e103fb54a7718a7d2
+<app-footer></app-footer>

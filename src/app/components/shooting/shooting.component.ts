@@ -23,4 +23,8 @@ export class ShootingComponent implements OnInit {
     return this.currentStep;
   }
 
+  zairasRedirect(url) {
+    window.location.replace(url);
+    }
 }
+
