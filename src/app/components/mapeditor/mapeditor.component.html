@@ -7,24 +7,49 @@
   <button mat-raised-button color="primary" (click)="setStep('createStructure')">Create Structure</button>
   <br>
   <br>
-    <div *ngFor="let structure of structures">
-      <div style="vertical-align: middle; font-size: 18px; line-height: 70px;">
-          <a (click)="editLatLong(structure.buildingID)">
-              <img src="https://www.esns.life/images/placeholder.svg" width="30px">
-            </a>
-            <a (click)="editNamePlacement(structure.buildingID)">
-                <img src="https://www.esns.life/images/signature.svg" width="30px">
-            </a>
-            <a (click)="editDimensions(structure.buildingID)">
-                <img src="https://www.esns.life/images/home.svg" width="30px">
-            </a>
-            &nbsp; &nbsp;
-            {{ structure.buildingName }}
-      </div>
-
+  <div *ngFor="let structure of structures">
+    <div style="vertical-align: middle; font-size: 18px; line-height: 70px;">
+      <a (click)="editLatLong(structure.buildingID)">
+        <img src="https://www.esns.life/images/placeholder.svg" width="30px">
+      </a>
+      <a (click)="editNamePlacement(structure.buildingID)">
+        <img src="https://www.esns.life/images/signature.svg" width="30px">
+      </a>
+      <a (click)="editDimensions(structure.buildingID)">
+        <img src="https://www.esns.life/images/home.svg" width="30px">
+      </a>
+      &nbsp; &nbsp; {{ structure.buildingName }}
     </div>
+
+  </div>
 </div>
 
+
+<div style="padding-left:20px" *ngIf="getStep()=='createStructure'">
+  <h1>Create Structure</h1>
+  <br>
+  <button mat-raised-button color="primary" (click)="debug()">Debug</button>
+  <button mat-raised-button color="primary" (click)="setStep('list')">Back to List</button>
+  <br>
+  <br>
+  <div style="color: red; font-weight: 600" *ngFor="let e of errors">
+    {{ e }}
+  </div>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput name="name" placeholder="Name" [(ngModel)]="createBuildingName">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput name="lat" placeholder="Latitude" [(ngModel)]="createBuildingLat">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput name="long" placeholder="Longitude" [(ngModel)]="createBuildingLong">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="saveNewStructure()">Save</button>
+    <button mat-raised-button color="primary" (click)="clearNewStructureVars()">Clear</button>
+  </form>
+</div>
 
 
 
@@ -70,7 +95,11 @@
   <div style="color: red; font-weight: 600" *ngFor="let e of errors">
     {{ e }}
   </div>
-  <div *ngIf="errors.length>0"><br><br><br></div>
+  <div *ngIf="errors.length>0">
+    <br>
+    <br>
+    <br>
+  </div>
 
   <form #editorForm="ngForm" id="editorForm">
     <div *ngFor="let d of dimensions; let i = index;" style="width: 900px">
@@ -89,10 +118,12 @@
       &nbsp; &nbsp; &nbsp;
 
       <!--button mat-mini-fab color="primary" (click)="insertHere(i)" style="width: 40px" type="button"> + </button-->
-      <button mat-mini-fab color="primary" (click)="moveDimensionDown(i)" style="width: 40px" type="button" *ngIf="isNotLast(i)"> \/ </button>
-      <button mat-mini-fab disabled style="width: 40px" type="button" *ngIf="!isNotLast(i)">  </button>
-      <button mat-mini-fab color="primary" (click)="moveDimensionUp(i)" style="width: 40px" type="button"  *ngIf="isNotFirst(i)"> /\ </button>
-      <button mat-mini-fab disabled style="width: 40px" type="button"  *ngIf="!isNotFirst(i)">    </button>
+      <button mat-mini-fab color="primary" (click)="moveDimensionDown(i)" style="width: 40px" type="button" *ngIf="isNotLast(i)">
+      \/ </button>
+      <button mat-mini-fab disabled style="width: 40px" type="button" *ngIf="!isNotLast(i)"> </button>
+      <button mat-mini-fab color="primary" (click)="moveDimensionUp(i)" style="width: 40px" type="button" *ngIf="isNotFirst(i)">
+      /\ </button>
+      <button mat-mini-fab disabled style="width: 40px" type="button" *ngIf="!isNotFirst(i)"> </button>
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
       <button mat-mini-fab color="warn" (click)="deleteDimension(d.p)" style="width: 40px" type="button"> X </button>
     </div>

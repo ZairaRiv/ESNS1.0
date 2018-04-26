@@ -13,6 +13,9 @@ export class MapeditorComponent implements OnInit {
   public structure: any;
   public dimensions: DimensionInterface[] = [];
   public errors: string[] = [];
+  public createBuildingName = '';
+  public createBuildingLat = '';
+  public createBuildingLong = '';
 
   constructor(
     private dataService: DataService,
@@ -22,6 +25,24 @@ export class MapeditorComponent implements OnInit {
     this.step = 'list';
     this.dataService.getCurrentSchool();
     this.getStructures();
+  }
+
+  reloadStructures() {
+    this.getStructures();
+  }
+
+  getStructures() {
+    this.dataService.getStructures().subscribe(data => {
+      if (data as any) {
+        this.structures = data;
+      }
+    });
+  }
+
+  clearNewStructureVars() {
+    this.createBuildingLat = '';
+    this.createBuildingLong = '';
+    this.createBuildingName = '';
   }
 
   validateDimensionForm() {
@@ -57,6 +78,23 @@ export class MapeditorComponent implements OnInit {
 
     if (startCount !== endCount) {
       this.errors.push('There are an uneven number of start and end points');
+    }
+  }
+
+  saveNewStructure() {
+    if (this.createBuildingName.length === 0) {
+      this.errors.push('Invalid name for a structure');
+      return;
+    } else {
+      const obj = {
+        buildingName: this.createBuildingName,
+        schoolID: this.dataService.getCurrentSchool().schoolID,
+        lat: this.createBuildingLat,
+        long: this.createBuildingLong
+      };
+      this.dataService.saveNewStructure(obj).subscribe(function () {
+          console.log('Inserted');
+      });
     }
   }
 
@@ -123,6 +161,9 @@ export class MapeditorComponent implements OnInit {
   setStep(_step) {
     this.errors = [];
     this.step = _step;
+    if (_step === 'list') {
+      this.getStructures();
+    }
   }
 
   editLatLong(buildingID) {
@@ -250,15 +291,6 @@ export class MapeditorComponent implements OnInit {
     }
   }
 
-  getStructures() {
-    this.dataService.getStructures().subscribe(data => {
-      if (data as any) {
-        console.log(data);
-        this.structures = data;
-      }
-    });
-  }
-
   startCheckHit(i) {
     this.dimensions[i].s = !this.dimensions[i].s;
   }
@@ -293,4 +325,12 @@ interface LatLongInterface {
   buildingName: string;
   lat: string;
   long: string;
+}
+
+interface StructureBase {
+    schoolID: string;
+    buildingID: string;
+    buildingName: string;
+    lat: string;
+    long: string;
 }
