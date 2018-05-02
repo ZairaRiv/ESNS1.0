@@ -23,7 +23,7 @@
 		<div class="child">
 			<form class="example-form">
 				<mat-form-field>
-					<input type="text" placeholder="Find Student..." aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto"
+					<input type="text" name = "findStudent" placeholder="Find Student..." aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto"
 					 (selectItem)="selectedItem($event)">
 					<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" mat-input-name="autocompleteField" mat-select-on-match required
 					 [displayWith]="displayFn">
