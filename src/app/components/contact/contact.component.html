@@ -1,37 +1,24 @@
 <app-header></app-header>
+<!--I think whatever is fucking this up, is messing up the original stuff too-->
+<div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="School Name" name = "input">
+  </mat-form-field>
+<br>
+<mat-form-field>
+  <input matInput placeholder="Enter your email" [formControl]="email" required name = "email">
+  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+</mat-form-field>
 
-<div>
-    <form class = "example-form center" name = "contactform">
-      <mat-card>
-          <mat-form-field class = "example-full-width">
-              <input matInput placeholder = "Name" name="name">
-          </mat-form-field>
+<br>
+<mat-form-field>
+  <mat-select placeholder="Select">
+    <mat-option *ngFor = "let item of issueMenu()" value="option" name = "option">Reason</mat-option>
+  </mat-select>
+</mat-form-field>
 
-          <br>
-          <mat-form-field class = "example-full-width">
-              <input matInput placeholder = "Subject" name="subject">
-          </mat-form-field>
-
-          <!-- Adding an option to scroll through options-->
-          <br>
-          <mat-form-field>
-            <mat-select placeholder="Type of Issue" [(ngModel)]="selectedValue" name = "issue">
-              <mat-option *ngFor="let issue listings" [value]="issue.value">
-                {{ issue.viewValue }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field>
-            <textarea matInput placeholder="Please write down your issue."></textarea>
-          </mat-form-field>
-
-          <br>
-          <button mat-raised-button (click) = "showSubmit()">Submit</button>
-          <mat-spinner [style.display] ="showSpinner ? 'block' : 'none'"></mat-spinner>
-
-      </mat-card>
-    </form>
-  </div>
-
-<app-footer></app-footer>
+  <br>
+  <mat-form-field>
+    <textarea matInput placeholder="Message" name  = "textArea"></textarea>
+  </mat-form-field>
+</div>

@@ -64,6 +64,15 @@ export class DataService {
     return menu;
    }
 
+   issueMenu() {
+     const menu: IssueDropdown[] = [
+      {name: 'Can\'t Use a Feature'},
+      {name: 'General Question'},
+      {name: 'Comment'},
+      {name: 'Administrator Question'}
+     ];
+     return menu;
+   }
    getReportTypes() {
      const reportTypes: GridItems[] = [
        {link: '/shooting/', title: 'Shooting', color: '#78C0E0', image: 'https://www.esns.life/images/shooting.png'},
@@ -233,3 +242,6 @@ interface GridItems {
   image: string;
 }
 
+interface IssueDropdown {
+  name: string;
+}

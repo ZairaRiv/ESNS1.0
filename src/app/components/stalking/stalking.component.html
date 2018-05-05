@@ -29,17 +29,16 @@
 			  <mat-form-field class = "example-full-width">
 					  <input matInput [(ngModel)] = "Submit" name = "relToPerson" placeholder = "Relation to you if any">
 			  </mat-form-field>
-
-			  <!-- Need a slide for this portion, and store info on that slider-->
+			  
+			  <!-- Need hammer.js added to use this stuff down here
 			  <br>
-			  <mat-form-field class = "example-full-width">
-					  <input matInput [(ngModel)] = "Submit" name = "dangerSlider" placeholder = "Danger">
-			  </mat-form-field>
-
+			  <mat-slider></mat-slider>
+			    -->
+			  
 			  <br> 
 			  <button mat-raised-button (click) = "showSubmit()">Submit</button>
 			  <mat-spinner [style.display] ="showSpinner ? 'block' : 'none'"></mat-spinner>
-		  
+		    
 		  </mat-card>
 	  
 		  <mat-card *ngIf = "answerDisplay">

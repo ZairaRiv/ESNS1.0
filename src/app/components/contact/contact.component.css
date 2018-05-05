@@ -63,6 +63,15 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
   }
   
+  .example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 50%;
+    margin: auto;  
+  }
   
   /*
   Copyright 2017-2018 Google Inc. All Rights Reserved.

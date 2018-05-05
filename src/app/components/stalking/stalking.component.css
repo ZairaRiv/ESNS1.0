@@ -16,3 +16,7 @@
     text-align: center;
     color: white;
 }
+
+mat-slider {
+  width: 300px;
+}
