@@ -1,8 +1,11 @@
 
 <div *ngIf="getStep()==1">
 	<app-bigbox title="Are You being followed right now?" color="#7380C9"></app-bigbox>
-	<app-optionsbuttons title="Yes" (click)="gotoStep(2)"></app-optionsbuttons>
-	<app-optionsbuttons title="No" (click)="gotoStep(3)"></app-optionsbuttons>
+	<div class="flex-container">
+			<app-optionsbuttons title="Yes" (click)="gotoStep(2)"></app-optionsbuttons>
+			<app-optionsbuttons title="No" (click)="gotoStep(3)"></app-optionsbuttons>
+	</div>
+
 </div>
 
 <!-- this will be based on campus and off campus-->
@@ -19,32 +22,32 @@
 			  <mat-form-field class = "example-full-width">
 				  <input matInput [(ngModel)] = "Submit" name = "nameOfPerson" placeholder = "Name of the person if known">
 			  </mat-form-field>
-  
+
 			  <br>
 			  <mat-form-field class = "example-full-width">
 				  <input matInput [(ngModel)] = "Submit" name = "descOfPerson" placeholder = "Description of person">
 			  </mat-form-field>
-		  
+
 			  <br>
 			  <mat-form-field class = "example-full-width">
 					  <input matInput [(ngModel)] = "Submit" name = "relToPerson" placeholder = "Relation to you if any">
 			  </mat-form-field>
-			  
+
 			  <!-- Need hammer.js added to use this stuff down here
 			  <br>
 			  <mat-slider></mat-slider>
 			    -->
-			  
-			  <br> 
+
+			  <br>
 			  <button mat-raised-button (click) = "showSubmit()">Submit</button>
 			  <mat-spinner [style.display] ="showSpinner ? 'block' : 'none'"></mat-spinner>
-		    
+
 		  </mat-card>
-	  
+
 		  <mat-card *ngIf = "answerDisplay">
 			  <h1>{{ submitDisplay}}, you're damn right.</h1>
 		  </mat-card>
-	  </form>	
+	  </form>
 	  </div>>
 </div>
 

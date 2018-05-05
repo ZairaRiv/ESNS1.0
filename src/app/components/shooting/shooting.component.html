@@ -1,15 +1,20 @@
-
 <div *ngIf="getStep()==1">
 	<app-bigbox title="Did this just occur?" color="#7380C9"></app-bigbox>
-	<app-optionsbuttons title="Yes" (click)="gotoStep(2)"></app-optionsbuttons>
-	<app-optionsbuttons title="No" (click)="gotoStep(3)"></app-optionsbuttons>
+	<div class="flex-container">
+		<app-optionsbuttons title="Yes" (click)="gotoStep(2)"></app-optionsbuttons>
+		<app-optionsbuttons title="No" (click)="gotoStep(3)"></app-optionsbuttons>
+	</div>
+
 </div>
 
 <div *ngIf="getStep()==2">
 	<app-bigbox title="Are you safe?" color="red"></app-bigbox>
-  <!-- will need an additional step figure out how-->
-  <app-optionsbuttons title = "Yes" (click)= "zairasRedirect('https://fast.esns.life/report2.php?lat=36.823967599999996&long=-119.70204929999998&dist=25&typeID=0')"></app-optionsbuttons>
-  <app-optionsbuttons title = "No" (click) = "zairasRedirect('https://fast.esns.life/report2.php?lat=36.823967599999996&long=-119.70204929999998&dist=25&typeID=0')"></app-optionsbuttons>
+	<!-- will need an additional step figure out how-->
+	<div class="flex-container">
+		<app-optionsbuttons title="Yes" (click)="zairasRedirect('https://fast.esns.life/report2.php?lat=36.823967599999996&long=-119.70204929999998&dist=25&typeID=0')"></app-optionsbuttons>
+		<app-optionsbuttons title="No" (click)="zairasRedirect('https://fast.esns.life/report2.php?lat=36.823967599999996&long=-119.70204929999998&dist=25&typeID=0')"></app-optionsbuttons>
+	</div>
+
 	<!-- need yes and no option, look at drive-->
 </div>
 
