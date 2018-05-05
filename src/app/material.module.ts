@@ -18,7 +18,7 @@ import { MatButtonModule,
 	MatSelectModule,
 } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, FormControl, FormGroupDirective, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
     imports: [
@@ -38,6 +38,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         MatCheckboxModule,
         MatAutocompleteModule,
         FormsModule,
+        FormControl,
+        FormGroupDirective,
         ReactiveFormsModule,
 		MatProgressSpinnerModule,
 		MatSelectModule,
@@ -59,6 +61,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         MatCheckboxModule,
         MatAutocompleteModule,
         FormsModule,
+        FormControl,
+        FormGroupDirective,
         ReactiveFormsModule,
 		MatProgressSpinnerModule,
 		MatSelectModule,
