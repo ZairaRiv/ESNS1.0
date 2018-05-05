@@ -1,5 +1,9 @@
-<p>
-  injury would be better on old esns, to report if a shooting has occurred
-  it is too complicated to do injury for all items 
-  especially for legal purposes 
-</p>
+<div *ngIf="getStep()==1">
+  <app-bigbox title="Are you injured?" color="#7380C9"></app-bigbox>
+  <app-optionsbuttons title="Yes" (click)="zairasRedirect('https://fast.esns.life/report2.php?lat=36.823967599999996&long=-119.70204929999998&dist=25&typeID=0')"></app-optionsbuttons>
+  <app-optionsbuttons title="No" (click)="gotoStep(3)"></app-optionsbuttons>
+</div>
+
+<div *ngIf="getStep()==3">
+  <app-bigbox title="This is not a toy" color="green"></app-bigbox>
+</div>

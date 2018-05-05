@@ -2,20 +2,19 @@
 <!--I think whatever is fucking this up, is messing up the original stuff too-->
 <div class="example-container">
   <mat-form-field>
-    <input matInput placeholder="School Name" name = "input">
+    <input matInput placeholder="School Name" name="schoolName">
   </mat-form-field>
-<br>
-<mat-form-field>
-  <input matInput placeholder="Enter your email" [formControl]="email" required name = "email">
-  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-</mat-form-field>
 
-<br>
-<mat-form-field>
-  <mat-select placeholder="Select">
-    <mat-option *ngFor = "let item of issueMenu()" value="option" name = "option">Reason</mat-option>
-  </mat-select>
-</mat-form-field>
+
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="Your Email" name="schoolEmail">
+    </mat-form-field>
+
+  <br> 
+  <mat-form-field>
+    <input matInput placeholder="Subject" name="contactReason">
+  </mat-form-field>
 
   <br>
   <mat-form-field>

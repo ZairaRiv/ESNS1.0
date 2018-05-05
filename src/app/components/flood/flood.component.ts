@@ -22,5 +22,7 @@ export class FloodComponent implements OnInit {
   getStep()  {
     return this.currentStep;
   }
-
+  zairasRedirect(url) {
+    window.location.replace(url);
+    }
 }
