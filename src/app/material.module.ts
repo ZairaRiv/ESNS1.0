@@ -14,8 +14,8 @@ import { MatButtonModule,
     MatExpansionModule,
     MatCardModule,
     MatGridListModule,
-	MatProgressSpinnerModule,
-	MatSelectModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
 } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {FormsModule, FormControl, FormGroupDirective, ReactiveFormsModule} from '@angular/forms';
@@ -38,9 +38,9 @@ import {FormsModule, FormControl, FormGroupDirective, ReactiveFormsModule} from 
         MatCheckboxModule,
         MatAutocompleteModule,
         FormsModule,
-        ReactiveFormsModule,
-		MatProgressSpinnerModule,
-		MatSelectModule,
+        MatProgressSpinnerModule,
+        MatSelectModule,
+        ReactiveFormsModule
     ],
     exports: [
         BrowserModule,
@@ -59,9 +59,9 @@ import {FormsModule, FormControl, FormGroupDirective, ReactiveFormsModule} from 
         MatCheckboxModule,
         MatAutocompleteModule,
         FormsModule,
-        ReactiveFormsModule,
-		MatProgressSpinnerModule,
-		MatSelectModule,
+        MatProgressSpinnerModule,
+        MatSelectModule,
+        ReactiveFormsModule
     ],
 })
 
