@@ -4,17 +4,16 @@
     <form class = "example-form center">
       <mat-card>
           <mat-form-field class = "example-full-width">
-              <input matInput [(ngModel)] = "Submit" placeholder = "Name of Student" name = "nameOfStudent">
+              <input matInput [(ngModel)] = "Name" placeholder = "Name of Student" name = "nameOfStudent">
           </mat-form-field>
 
           <br>
           <mat-form-field class = "example-full-width">
-              <input matInput [(ngModel)] = "Submit" placeholder = "Your Key" name = "key">
+              <input matInput [(ngModel)] = "Key" placeholder = "Your Key" name = "key">
           </mat-form-field>
       
           <br> 
           <button mat-raised-button (click) = "showSubmit()">Submit</button>
-          <mat-spinner [style.display] ="showSpinner ? 'block' : 'none'"></mat-spinner>
       
       </mat-card>
     </form>	

@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./findstudentpublic.component.css']
 })
 export class FindstudentpublicComponent implements OnInit {
-
+Name: string;
+Key: string;
   constructor() { }
 
   ngOnInit() {
