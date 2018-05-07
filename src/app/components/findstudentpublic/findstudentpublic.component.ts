@@ -24,6 +24,9 @@ export class FindstudentpublicComponent implements OnInit {
       if ((data as safetyInterface)) {
         console.log(data);
         this.safety = data[0];
+        if (this.safety.safe === null) {
+          this.safety.safe = '2';
+        }
       }});
   }
 }
