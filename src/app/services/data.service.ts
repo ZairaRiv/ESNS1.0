@@ -126,6 +126,10 @@ export class DataService {
     return this.httpc.get(this.dataUrl + '/services/getstudents_api.php?schoolID=' + schoolID);
   }
 
+  getSafetyReport(phone) {
+    return this.httpc.get(this.dataUrl + '/services/getsafetyreport_api.php?phone=' + phone);
+  }
+
   getBuildings() {
     const schoolID = this.getCurrentSchool().schoolID;
     return this.httpc.get(this.dataUrl + '/services/loadbuildings_api.php?schoolID=' + schoolID);
