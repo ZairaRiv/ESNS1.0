@@ -25,8 +25,17 @@ export class MessagingComponent implements OnInit {
   sendEmail() {
     this.emailSending = true;
     const obj = JSON.parse(localStorage.getItem('currentStudent'));
+    const school = JSON.parse(localStorage.getItem('currentSchool'));
+
     console.log(obj);
-    this.dataService.sendEmail('ESNS Test', obj.Email, 'This is only a test.', obj.firstName + ' ' + obj.lastName).subscribe(data => {
+    let message = 'Your status has been requested.<br><br>';
+    message += '<a href="https://fast.esns.life/services/mapgen.html?schoolID=' + school.schoolID;
+    message += '&typeID=0&studentID=' + obj.studentID + '">Update Your Status at ESNS</a>';
+    message += '<br><br>';
+    message += 'Thanks, <br>ESNS';
+
+    this.dataService.sendEmail('ESNS Status Request', obj.Email, message , obj.firstName
+    + ' ' + obj.lastName).subscribe(data => {
       if ((data as any).success) {
         this.emailSending = false;
       } else {
@@ -39,8 +48,13 @@ export class MessagingComponent implements OnInit {
   sendText() {
     this.textSending = true;
     const obj = JSON.parse(localStorage.getItem('currentStudent'));
+    const school = JSON.parse(localStorage.getItem('currentSchool'));
+
     console.log(obj);
-    this.dataService.sendText(obj.phoneNumber, 'Testing 123').subscribe(data => {
+    let message = 'Your status has been requested.  Please visit: \n\r';
+    message += 'https://fast.esns.life/services/mapgen.html?schoolID=' + school.schoolID + '&typeID=0&studentID=' + obj.studentID;
+
+    this.dataService.sendText(obj.phoneNumber, message).subscribe(data => {
       if ((data as any).httpStatusCode !== '401') {
       } else {
         window.alert((data as any).message);
